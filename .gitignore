@@ -1,0 +1,94 @@
+# ----- OS / Editor -----
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon\r
+.Spotlight-V100
+.Trashes
+.fseventsd
+Thumbs.db
+ehthumbs.db
+
+# VSCode
+.vscode/
+
+# JetBrains
+.idea/
+
+# Vim/Emacs/Sublime
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.sublime-project
+
+# ----- Environment / Secrets -----
+.env
+.env.*
+!.env.example
+
+# ----- Node / JavaScript / TypeScript -----
+node_modules/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+.pnpm-store/
+.cache/
+.eslintcache
+.parcel-cache/
+.turbo/
+.vercel/
+dist/
+build/
+coverage/
+.nyc_output/
+.next/
+.nuxt/
+.output/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ----- Python -----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-wheel-metadata/
+build/
+dist/
+develop-eggs/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+.mypy_cache/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ----- Java / JVM -----
+*.class
+.gradle/
+target/
+
+# ----- Misc Tools -----
+.DS_Store?
+.coverage
+.sass-cache/
+.firebase/
+
+# ----- Project Specific (customize as needed) -----
+# Add any personal/local files you don’t want tracked below, for example:
+# notes.local.md
+# secrets/*.json
+braindump-1002.md
+outline-1002.md
