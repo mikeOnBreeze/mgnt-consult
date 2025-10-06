@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineering Fundamentals | Magnite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== CSS VARIABLES ========== */
+        :root {
+            /* Brand Gradients */
+            --mg-hero-gradient: linear-gradient(135deg, #1C0033 0%, #360079 40%, #6B1FB3 100%);
+            --mg-surface-gradient: linear-gradient(180deg, #220044 0%, #3C1275 100%);
+
+            /* Surfaces */
+            --mg-surface-0: #0F0120;
+            --mg-surface-1: #220044;
+            --mg-surface-2: #3C1275;
+
+            /* Text */
+            --mg-text-primary: #FFFFFF;
+            --mg-text-secondary: #D1B3FF;
+            --mg-text-meta: #9E9E9E;
+
+            /* Accents */
+            --mg-cyan: #00C2FF;
+            --mg-green: #6DFF8B;
+            --mg-gold: #FFC857;
+
+            /* Borders & Effects */
+            --mg-border: rgba(255, 255, 255, 0.08);
+            --mg-ring: rgba(0, 194, 255, 0.35);
+            --mg-shadow-elev-1: 0 8px 24px rgba(28, 0, 51, 0.45);
+            --mg-shadow-elev-2: 0 16px 40px rgba(54, 0, 121, 0.40);
+
+            /* Radii */
+            --mg-radius-card: 20px;
+            --mg-radius-chip: 999px;
+
+            /* Motion */
+            --mg-duration-fast: 150ms;
+            --mg-duration: 200ms;
+            --mg-duration-slow: 300ms;
+            --mg-ease: cubic-bezier(0.20, 0.60, 0.20, 1.00);
+
+            /* Spacing */
+            --spacing-xs: 8px;
+            --spacing-sm: 12px;
+            --spacing-md: 20px;
+            --spacing-lg: 32px;
+            --spacing-xl: 52px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            :root {
+                --mg-duration-fast: 0ms;
+                --mg-duration: 0ms;
+                --mg-duration-slow: 0ms;
+            }
+        }
+
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--mg-text-primary);
+            background: var(--mg-surface-0);
+            overflow-x: hidden;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1 {
+            font-size: 56px;
+            line-height: 1.15;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: var(--spacing-md);
+        }
+
+        h2 {
+            font-size: 44px;
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, var(--mg-text-primary) 0%, var(--mg-text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h3 {
+            font-size: 32px;
+            line-height: 1.25;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--mg-text-primary);
+        }
+
+        h4 {
+            font-size: 24px;
+            line-height: 1.3;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--mg-text-secondary);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            color: var(--mg-cyan);
+            text-decoration: none;
+            position: relative;
+            transition: color var(--mg-duration) var(--mg-ease);
+        }
+
+        a:hover {
+            color: var(--mg-text-primary);
+        }
+
+        code {
+            font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;
+            background: var(--mg-surface-1);
+            color: var(--mg-cyan);
+            border-radius: 6px;
+            padding: 0.1em 0.3em;
+        }
+
+        strong {
+            color: var(--mg-text-primary);
+            font-weight: 600;
+        }
+
+        /* ========== LAYOUT ========== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background: var(--mg-hero-gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(107, 31, 179, 0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .hero h1 {
+            margin-bottom: var(--spacing-lg);
+            animation: fadeInUp 0.8s var(--mg-ease) both;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--mg-text-secondary);
+            margin-bottom: var(--spacing-xl);
+            animation: fadeInUp 0.8s var(--mg-ease) 0.2s both;
+        }
+
+        /* ========== QUOTE CARD ========== */
+        .quote-card {
+            background: var(--mg-surface-gradient);
+            border: 1px solid var(--mg-border);
+            border-radius: var(--mg-radius-card);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            box-shadow: var(--mg-shadow-elev-1);
+            animation: fadeInUp 0.8s var(--mg-ease) 0.4s both;
+            transition: transform var(--mg-duration) var(--mg-ease), box-shadow var(--mg-duration) var(--mg-ease);
+        }
+
+        .quote-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--mg-shadow-elev-2);
+        }
+
+        .quote-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            font-size: 14px;
+            color: var(--mg-text-meta);
+        }
+
+        .quote-author {
+            color: var(--mg-cyan);
+            font-weight: 600;
+        }
+
+        .quote-text {
+            font-style: italic;
+            line-height: 1.7;
+            color: var(--mg-text-secondary);
+        }
+
+        /* ========== SECTION ========== */
+        section {
+            padding: var(--spacing-xl) 0;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--mg-ease) both;
+            animation-delay: calc(var(--section-index, 0) * 0.1s);
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--mg-border) 50%, transparent 100%);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--mg-cyan);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--mg-radius-chip);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* ========== CONTENT CARD ========== */
+        .content-card {
+            background: var(--mg-surface-gradient);
+            border: 1px solid var(--mg-border);
+            border-radius: var(--mg-radius-card);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--mg-shadow-elev-1);
+            transition: transform var(--mg-duration) var(--mg-ease), box-shadow var(--mg-duration) var(--mg-ease);
+        }
+
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--mg-shadow-elev-2);
+        }
+
+        .content-card h3 {
+            color: var(--mg-text-primary);
+        }
+
+        .content-card h4 {
+            color: var(--mg-text-secondary);
+            margin-top: var(--spacing-md);
+        }
+
+        .content-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-card li {
+            position: relative;
+            padding-left: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            color: var(--mg-text-secondary);
+            line-height: 1.6;
+        }
+
+        .content-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--mg-cyan);
+            font-weight: 600;
+        }
+
+        /* ========== ACCENT CARDS ========== */
+        .card-cyan {
+            border-left: 3px solid var(--mg-cyan);
+        }
+
+        .card-cyan .section-badge {
+            color: var(--mg-cyan);
+            box-shadow: 0 0 12px rgba(0, 194, 255, 0.2);
+        }
+
+        .card-green {
+            border-left: 3px solid var(--mg-green);
+        }
+
+        .card-green .section-badge {
+            color: var(--mg-green);
+            box-shadow: 0 0 12px rgba(109, 255, 139, 0.2);
+        }
+
+        .card-gold {
+            border-left: 3px solid var(--mg-gold);
+        }
+
+        .card-gold .section-badge {
+            color: var(--mg-gold);
+            box-shadow: 0 0 12px rgba(255, 200, 87, 0.2);
+        }
+
+        /* ========== MODE BLOCKS ========== */
+        .mode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .mode-block {
+            background: var(--mg-surface-gradient);
+            border: 1px solid var(--mg-border);
+            border-left: 3px solid var(--accent-color, var(--mg-cyan));
+            border-radius: var(--mg-radius-card);
+            padding: var(--spacing-md);
+            box-shadow: var(--mg-shadow-elev-1);
+            transition: transform var(--mg-duration) var(--mg-ease), box-shadow var(--mg-duration) var(--mg-ease);
+        }
+
+        .mode-block:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--mg-shadow-elev-2);
+        }
+
+        .mode-block h4 {
+            color: var(--accent-color, var(--mg-cyan));
+            font-size: 18px;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .mode-block p {
+            font-size: 14px;
+            color: var(--mg-text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* ========== GRID LAYOUT ========== */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        /* ========== CALLOUT ========== */
+        .callout {
+            background: rgba(0, 194, 255, 0.05);
+            border: 1px solid var(--mg-cyan);
+            border-radius: var(--mg-radius-card);
+            padding: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .callout-success {
+            background: rgba(109, 255, 139, 0.05);
+            border-color: var(--mg-green);
+        }
+
+        .callout-warning {
+            background: rgba(255, 200, 87, 0.05);
+            border-color: var(--mg-gold);
+        }
+
+        .callout p {
+            margin: 0;
+            color: var(--mg-text-primary);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+            color: var(--mg-text-meta);
+            font-size: 14px;
+        }
+
+        .footer-brand {
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--mg-text-primary);
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            h3 {
+                font-size: 24px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: var(--spacing-xl) 0;
+            }
+
+            .mode-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .two-col-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animation trigger */
+        section[data-visible="true"] {
+            animation: fadeInUp 0.8s var(--mg-ease) both;
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-content container">
+            <h1>AI Engineering Fundamentals</h1>
+            <p class="hero-subtitle">Mastering Prompt Engineering, Context Engineering, and Autonomous Agents</p>
+
+            <div class="quote-card">
+                <div class="quote-header">
+                    <span class="quote-author">Andrej Karpathy</span>
+                    <span>•</span>
+                    <span>@karpathy</span>
+                    <span>•</span>
+                    <span>February 2, 2025</span>
+                </div>
+                <p class="quote-text">
+                    "There's a new kind of coding I call 'vibe coding', where you fully give in to the vibes, embrace exponentials, and forget that the code even exists. It's possible because the LLMs (e.g. Cursor Composer w Sonnet) are getting too good. Also I just talk to Composer with SuperWhisper so I barely even touch the keyboard. I ask for the dumbest things like 'decrease the padding on the sidebar by half' because I'm too lazy to find it. I 'Accept All' always, I don't read the diffs anymore. When I get error messages I just copy paste them in with no comment, usually that fixes it. The code grows beyond my usual comprehension, I'd have to really read through it for a while. Sometimes the LLMs can't fix a bug so I just work around it or ask for random changes until it goes away. It's not too bad for throwaway weekend projects, but still quite amusing. I'm building a project or webapp, but it's not really coding - I just see stuff, say stuff, run stuff, and copy paste stuff, and it mostly works."
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- SLIDE 1: PROMPT ENGINEERING -->
+    <section style="--section-index: 1">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Slide 1</div>
+                <h2>Prompt Engineering</h2>
+                <p style="color: var(--mg-text-secondary); font-size: 18px;">The Art of Effective AI Instructions</p>
+            </div>
+
+            <div class="two-col-grid">
+                <div class="content-card card-cyan">
+                    <h3>What is Prompt Engineering?</h3>
+                    <ul>
+                        <li>The art and science of crafting effective instructions to AI models to get better, more reliable outputs</li>
+                        <li>A practical skill that requires only text input—no coding or technical training required</li>
+                    </ul>
+
+                    <h4>Why It Matters</h4>
+                    <ul>
+                        <li><strong>Cost-effective:</strong> Works with base models without expensive fine-tuning</li>
+                        <li><strong>Flexible:</strong> Allows rapid experimentation and iteration</li>
+                        <li><strong>Accessible:</strong> Anyone can learn it with practice</li>
+                    </ul>
+                </div>
+
+                <div class="content-card card-cyan">
+                    <h3>Core Principle: Be Clear and Specific</h3>
+                    <ul>
+                        <li>Remove ambiguity—state exactly what you want</li>
+                        <li>Provide context about your goals and constraints</li>
+                        <li>Define success criteria upfront</li>
+                    </ul>
+
+                    <h4>Use Examples (Multishot Prompting)</h4>
+                    <ul>
+                        <li>Show the AI what good output looks like with 2-3 examples</li>
+                        <li>Examples are more powerful than lengthy explanations</li>
+                        <li>Demonstrates format, tone, and level of detail</li>
+                    </ul>
+                </div>
+
+                <div class="content-card card-cyan">
+                    <h3>Break Down Complex Tasks</h3>
+                    <h4>Chain of Thought</h4>
+                    <ul>
+                        <li>Ask AI to "think step-by-step" for complex problems</li>
+                        <li>Guide the reasoning process explicitly</li>
+                        <li>Improves accuracy and helps you verify the logic</li>
+                    </ul>
+
+                    <h4>Assign Roles and Use Structure</h4>
+                    <ul>
+                        <li>Give AI a specific role (e.g., "You are an expert teacher...")</li>
+                        <li>Use structured formats (bullet points, numbered lists, XML tags)</li>
+                        <li>Helps organize information and maintain consistency</li>
+                    </ul>
+                </div>
+
+                <div class="content-card card-cyan">
+                    <h3>Iterate and Experiment</h3>
+                    <ul>
+                        <li>Start with a draft prompt, test it, refine it</li>
+                        <li>Compare different approaches systematically</li>
+                        <li>Prompt engineering improves with practice</li>
+                    </ul>
+
+                    <div class="callout" style="margin-top: var(--spacing-md);">
+                        <p><strong>Key Takeaway:</strong> Better prompts = better AI outputs. Small changes in wording can produce dramatically different results. Think of prompting as a conversation: provide context, examples, and clear guidance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: var(--spacing-lg);">
+                <a href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank">Learn more at Anthropic Docs →</a>
+            </p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SLIDE 2: CONTEXT ENGINEERING -->
+    <section style="--section-index: 2">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Slide 2</div>
+                <h2>Context Engineering</h2>
+                <p style="color: var(--mg-text-secondary); font-size: 18px;">The "NEW Shit" - Managing AI Agent Information Environments</p>
+            </div>
+
+            <div class="content-card card-green">
+                <h3>What is Context Engineering?</h3>
+                <ul>
+                    <li><strong>Evolution beyond prompt engineering:</strong> Managing the <em>entire</em> information environment an AI agent operates in—not just the question you ask</li>
+                    <li><strong>Core definition:</strong> "Curating the smallest possible set of high-signal tokens that maximize the likelihood of success"</li>
+                    <li>Information quality over quantity</li>
+                </ul>
+            </div>
+
+            <div class="two-col-grid">
+                <div class="content-card card-green">
+                    <h3>Why It's Critical for AI Agents</h3>
+                    <ul>
+                        <li><strong>The finite attention problem:</strong> LLMs suffer from "context rot"—as context grows, accuracy degrades</li>
+                        <li><strong>Agent failures = Context failures:</strong> In 2025, most agent failures aren't model limitations—they're context management failures</li>
+                        <li>Better context = more reliable, autonomous agents</li>
+                    </ul>
+                </div>
+
+                <div class="content-card card-green">
+                    <h3>How It Differs From Prompt Engineering</h3>
+                    <ul>
+                        <li><strong>Prompt engineering:</strong> Writing effective instructions/questions ("What should I ask?")</li>
+                        <li><strong>Context engineering:</strong> Designing the complete operational system ("What does the agent need to know, remember, and access?")</li>
+                        <li><strong>Scope:</strong> Manages system instructions, tools, external data sources, conversation history, and memory</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card card-green">
+                <h3>The Four Core Context Management Strategies</h3>
+                <div class="mode-grid">
+                    <div class="mode-block" style="--accent-color: var(--mg-green);">
+                        <h4>Write</h4>
+                        <p>Save information outside the context window (external memory/databases)</p>
+                    </div>
+                    <div class="mode-block" style="--accent-color: var(--mg-green);">
+                        <h4>Select</h4>
+                        <p>Pull in only relevant information when needed (retrieval)</p>
+                    </div>
+                    <div class="mode-block" style="--accent-color: var(--mg-green);">
+                        <h4>Compress</h4>
+                        <p>Summarize/condense to retain only essential tokens</p>
+                    </div>
+                    <div class="mode-block" style="--accent-color: var(--mg-green);">
+                        <h4>Isolate</h4>
+                        <p>Separate contexts for different purposes (sub-agents, workspaces)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-col-grid">
+                <div class="content-card card-green">
+                    <h3>Key Principle: "Informative Yet Tight"</h3>
+                    <ul>
+                        <li><strong>Treat context as precious:</strong> Like RAM in a computer—finite and expensive</li>
+                        <li><strong>Minimal is better:</strong> Start with minimal context and add only what improves performance</li>
+                        <li><strong>Avoid pollution:</strong> Remove outdated, conflicting, or redundant information</li>
+                    </ul>
+                </div>
+
+                <div class="content-card card-green">
+                    <h3>Practical Techniques That Work</h3>
+                    <ul>
+                        <li><strong>Context compaction:</strong> Summarize long conversations before hitting limits</li>
+                        <li><strong>Structured note-taking:</strong> Agents maintain external "notebooks" of key facts</li>
+                        <li><strong>Sub-agent architectures:</strong> Break complex tasks into focused mini-agents with clean context</li>
+                        <li><strong>Tool design:</strong> Create self-contained, error-robust tools with clear purposes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="callout callout-success">
+                <p><strong>Real-World Impact Example:</strong></p>
+                <p style="margin-top: var(--spacing-sm); color: var(--mg-text-secondary);">
+                    <strong style="color: var(--mg-text-primary);">Without context engineering:</strong> "Generate Q3 sales report" → Agent asks "What should I include?"<br><br>
+                    <strong style="color: var(--mg-text-primary);">With context engineering:</strong> Agent automatically drafts comprehensive report by accessing CRM data, support logs, meeting notes, templates—zero clarification questions
+                </p>
+            </div>
+
+            <div class="callout">
+                <p><strong>Key Takeaway:</strong> Context engineering is the foundation of reliable AI systems. The shift from agents that "guess" to agents that "understand". Think of it like setting up a workspace for a new employee—right tools, files, access, and guidelines.</p>
+            </div>
+
+            <p style="text-align: center; margin-top: var(--spacing-lg);">
+                <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank">Read the full Anthropic article →</a>
+            </p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SLIDE 3: RIPER-5 MODES -->
+    <section style="--section-index: 3">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Slide 3</div>
+                <h2>RIPER-5 Modes</h2>
+                <p style="color: var(--mg-text-secondary); font-size: 18px;">Mental Framework for Guiding AI Models</p>
+            </div>
+
+            <div class="content-card card-gold">
+                <h3>The Five Operational Modes</h3>
+                <p style="color: var(--mg-text-secondary);">A structured protocol to prevent AI from being overeager and breaking existing code by forcing separation of thinking from doing.</p>
+            </div>
+
+            <div class="mode-grid">
+                <div class="mode-block" style="--accent-color: var(--mg-cyan);">
+                    <h4>MODE 1: RESEARCH</h4>
+                    <p><strong>Purpose:</strong> Information gathering ONLY</p>
+                    <p><strong>Permitted:</strong> Reading files, asking clarifying questions, understanding code structure</p>
+                    <p><strong>Forbidden:</strong> Suggestions, implementations, planning</p>
+                    <p><strong>Output:</strong> ONLY observations and questions</p>
+                </div>
+
+                <div class="mode-block" style="--accent-color: var(--mg-green);">
+                    <h4>MODE 2: INNOVATE (Brainstorm)</h4>
+                    <p><strong>Purpose:</strong> Brainstorming potential approaches</p>
+                    <p><strong>Permitted:</strong> Discussing ideas, advantages/disadvantages, seeking feedback</p>
+                    <p><strong>Forbidden:</strong> Concrete planning, implementation details, code writing</p>
+                    <p><strong>Output:</strong> ONLY possibilities and considerations</p>
+                </div>
+
+                <div class="mode-block" style="--accent-color: #6B1FB3;">
+                    <h4>MODE 3: PLAN</h4>
+                    <p><strong>Purpose:</strong> Creating exhaustive technical specification</p>
+                    <p><strong>Permitted:</strong> Detailed plans with exact file paths, function names, changes</p>
+                    <p><strong>Forbidden:</strong> Any implementation or code writing</p>
+                    <p><strong>Requirement:</strong> Plan comprehensive enough that no creative decisions needed during execution</p>
+                    <p><strong>Output:</strong> Complete specifications + numbered CHECKLIST</p>
+                </div>
+
+                <div class="mode-block" style="--accent-color: var(--mg-gold);">
+                    <h4>MODE 4: EXECUTE</h4>
+                    <p><strong>Purpose:</strong> Implementing EXACTLY what was planned</p>
+                    <p><strong>Permitted:</strong> ONLY implementing what was explicitly detailed in approved plan</p>
+                    <p><strong>Forbidden:</strong> Any deviation, improvement, or creative addition not in plan</p>
+                    <p><strong>Rule:</strong> If ANY issue requires deviation, IMMEDIATELY return to PLAN mode</p>
+                </div>
+
+                <div class="mode-block" style="--accent-color: #FF5757;">
+                    <h4>MODE 5: REVIEW</h4>
+                    <p><strong>Purpose:</strong> Ruthlessly validate implementation against plan</p>
+                    <p><strong>Required:</strong> Line-by-line comparison, EXPLICITLY FLAG ANY DEVIATION</p>
+                    <p><strong>Output:</strong> Either "IMPLEMENTATION MATCHES PLAN EXACTLY" or "IMPLEMENTATION DEVIATES FROM PLAN"</p>
+                </div>
+            </div>
+
+            <div class="two-col-grid">
+                <div class="content-card card-gold">
+                    <h3>Why This Matters</h3>
+                    <ul>
+                        <li>Prevents AI from being overeager and breaking existing code</li>
+                        <li>Forces separation of thinking from doing</li>
+                        <li>Ensures no unauthorized modifications</li>
+                        <li>Creates accountability and traceability</li>
+                        <li>Note: Less necessary with smarter models, but excellent mental framework for complex projects</li>
+                    </ul>
+                </div>
+
+                <div class="content-card card-gold">
+                    <h3>Key Protocol Rules</h3>
+                    <ul>
+                        <li>Must declare mode at start of EVERY response: <code>[MODE: MODE_NAME]</code></li>
+                        <li>Cannot transition between modes without explicit permission</li>
+                        <li>In EXECUTE mode, must follow plan with 100% fidelity</li>
+                        <li>In REVIEW mode, must flag even smallest deviation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SLIDE 4: DEEP AGENTS -->
+    <section style="--section-index: 4">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Slide 4</div>
+                <h2>Deep Agents</h2>
+                <p style="color: var(--mg-text-secondary); font-size: 18px;">From Simple AI to Autonomous Systems</p>
+            </div>
+
+            <div class="content-card card-cyan">
+                <h3>What Are Deep Agents?</h3>
+                <ul>
+                    <li>Advanced AI systems that autonomously handle complex, multi-step tasks</li>
+                    <li>Go beyond simple Q&A to plan ahead, break down problems, work independently toward goals</li>
+                    <li><strong>Analogy:</strong> Voice assistant (reactive) vs. Project manager (proactive and autonomous)</li>
+                </ul>
+            </div>
+
+            <div class="content-card card-cyan">
+                <h3>The Four Core Components (Architecture)</h3>
+                <div class="mode-grid">
+                    <div class="mode-block" style="--accent-color: var(--mg-cyan);">
+                        <h4>Detailed System Prompt</h4>
+                        <p>Extensive instructions with examples (like Claude Code's system prompt)</p>
+                    </div>
+                    <div class="mode-block" style="--accent-color: var(--mg-cyan);">
+                        <h4>Planning Tool</h4>
+                        <p>Built-in task tracking (Todo lists) to break goals into manageable steps</p>
+                    </div>
+                    <div class="mode-block" style="--accent-color: var(--mg-cyan);">
+                        <h4>Sub-agents</h4>
+                        <p>Specialized AI agents that handle specific subtasks with focused context</p>
+                    </div>
+                    <div class="mode-block" style="--accent-color: var(--mg-cyan);">
+                        <h4>File System Access</h4>
+                        <p>Persistent storage for notes, context, accumulated information</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-col-grid">
+                <div class="content-card card-cyan">
+                    <h3>How Deep Agents Work Differently</h3>
+                    <ul>
+                        <li><strong>AI Assistants (Shallow):</strong> Wait for step-by-step instructions, respond to each prompt separately</li>
+                        <li><strong>Deep Agents (Autonomous):</strong> Given a goal, independently plan workflows, decompose tasks, execute without constant prompting</li>
+                        <li>Use hierarchical task planning to maintain dependencies and execution order</li>
+                    </ul>
+                </div>
+
+                <div class="content-card card-cyan">
+                    <h3>Key Features That Enable Autonomy</h3>
+                    <ul>
+                        <li><strong>Long-term planning:</strong> Breaking down complex objectives into dependency-aware subtasks</li>
+                        <li><strong>Context management:</strong> Using virtual file systems and sub-agents to avoid context overload</li>
+                        <li><strong>Adaptive execution:</strong> Can refine plans based on results and changing circumstances</li>
+                        <li><strong>Tool creation:</strong> Some systems can even create their own tools from UI interactions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card card-cyan">
+                <h3>Real-World Examples</h3>
+                <div class="mode-grid">
+                    <div class="mode-block" style="--accent-color: var(--mg-green);">
+                        <h4>Claude Code</h4>
+                        <p>Autonomous coding assistant that plans, writes, tests, debugs with minimal human intervention</p>
+                    </div>
+                    <div class="mode-block" style="--accent-color: var(--mg-green);">
+                        <h4>Deep Research</h4>
+                        <p>Multi-step research gathering information across sources, synthesizing reports</p>
+                    </div>
+                    <div class="mode-block" style="--accent-color: var(--mg-green);">
+                        <h4>Manus</h4>
+                        <p>Complex task automation system using deep agent principles</p>
+                    </div>
+                    <div class="mode-block" style="--accent-color: var(--mg-green);">
+                        <h4>LangGraph & DeepAgents</h4>
+                        <p>Frameworks making these systems accessible to developers</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-col-grid">
+                <div class="content-card card-cyan">
+                    <h3>Why This Matters for Developers</h3>
+                    <ul>
+                        <li><strong>Automation:</strong> Handle complex workflows without continuous human supervision</li>
+                        <li><strong>Productivity:</strong> One initial goal can trigger hours of autonomous work</li>
+                        <li><strong>Scalability:</strong> Agents can decompose and parallelize tasks across sub-agents</li>
+                        <li><strong>Intelligence:</strong> Systems that learn, adapt, improve through reflection and feedback</li>
+                    </ul>
+                </div>
+
+                <div class="content-card card-cyan">
+                    <h3>The Future of Development</h3>
+                    <ul>
+                        <li>Shift from "writing code" to "directing autonomous agents" that write, test, improve code</li>
+                        <li>Moving from reactive AI (assistants) to proactive AI (agents) that understand goals and create plans</li>
+                        <li>Enables developers to focus on high-level architecture while agents handle implementation</li>
+                        <li>Foundation for next-generation software development workflows</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="callout">
+                <p><strong>Key Takeaway:</strong> Deep Agents represent a paradigm shift from AI that answers questions to AI that autonomously solves problems. Transforming software development through goal-oriented, self-planning, adaptive automation.</p>
+            </div>
+
+            <p style="text-align: center; margin-top: var(--spacing-lg);">
+                <a href="https://github.com/langchain-ai/deepagents" target="_blank">Explore DeepAgents on GitHub →</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="section-divider" style="margin-bottom: var(--spacing-lg);"></div>
+            <p>Made with <span class="footer-brand">Magnite</span></p>
+            <p style="margin-top: var(--spacing-xs); font-size: 12px;">Presentation crafted for AI engineering beginners</p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.setAttribute('data-visible', 'true');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scroll for anchor links (if you add any)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -11,4 +11,10 @@ https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview
 ** the NEW shit **
 https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
 
+# Modes
+-- see RIPER-5.md ... not necessary anymore bc models smarter, but good mental framework for guiding models
+-- RESEARCH, INNOVATE (BRAINSTORM), PLAN, EXECUTE, REVIEW
 
+# Deep Agent (claude code) system prompts
+https://github.com/langchain-ai/deepagents
+https://github.com/kehanzhang/lovable-clone/blob/main/lovable-ui/lib/claude-code.ts
