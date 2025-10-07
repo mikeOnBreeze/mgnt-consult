@@ -1,0 +1,552 @@
+{
+  "callId": "7264530111852323899",
+  "title": "Magnite-DV360 Working Group: Live & Formats",
+  "recap": "Samantha, Amanda, Nick and Anna from Magnite discussed a potential case study with Zones, focusing on a successful live sports campaign for GoDaddy. The group explored ways to effectively frame the case study, including highlighting Magnite's live stream capabilities, the advantages of biddable inventory over guaranteed deals, and the potential opportunities in sports programming, particularly in the postseason and playoffs. The participants agreed to collaborate on the case study, with Zones providing the template and Magnite reviewing the content before publication.",
+  "keyPoints": [
+    "Case Study Proposal: Michelle initiated a discussion about a potential case study focusing on the efficiencies of running live campaigns through GV 360, specifically mentioning CPM as a key metric.",
+    "Target Campaign: The MLB test with GoDaddy was identified as an ideal candidate for the case study due to GoDaddy's permission to go external and the potential for a joint Magnite, GoDaddy, and DV 360 logo presence.",
+    "Additional Campaigns: Zones suggested including a Magnite deal with Disney and Dick's Sporting Goods, potentially as a separate case study, to cover both PMP and PG deals.",
+    "Defining Efficiency: Nick proposed framing efficiency around the ability to spread the load during live events, blunt high concurrency peaks, improve win rates for buyers, and ensure budget delivery over the event's duration.",
+    "Budget Distribution Debate: Vinod questioned whether customers prefer budget distribution throughout an event or front-loading, while Nick emphasized delivering budget after key moments to avoid shoulder content.",
+    "Data Limitations: Nick informed the team that hourly data for the recent MLB test was no longer available due to a 40-day retention policy, limiting detailed analysis of delivery patterns.",
+    "CPM and Unique Reach: Michelle inquired about a CPM story, while Zones mentioned unique reach as a metric, noting that live CPM is typically higher but could be positioned as more efficient than linear TV.",
+    "Programmatic Live Value: The team discussed showcasing why buying live sports programmatically is advantageous, especially if it can be demonstrated as cheaper than linear for the same content.",
+    "Seasonal Buying Opportunities: Nick highlighted that sports buying patterns are often season-aligned rather than quarterly, suggesting opportunities for programmatic supply during events like the MLB postseason.",
+    "Next Steps: Zones will update their case study template and send it for feedback, while Amanda will check with Magnite's content team regarding logo usage and provide marketing materials on the live stream accelerator."
+  ],
+  "nextSteps": [
+    "Zones will update their case study template and send it to the Magnite team within the next week or so for feedback.",
+    "Amanda will check with her content creation team regarding the approval process for using the Magnite logo on the case study template.",
+    "Amanda will gather marketing materials on the live stream accelerator and share them with Michelle and Zones.",
+    "Michelle and Zones will pull CPM data for the Godaddy campaign.",
+    "Michelle and Zones will send the draft case study to Anna for review and potential additions."
+  ],
+  "entities": [
+    {
+      "type": "topic",
+      "value": "Call Setup"
+    },
+    {
+      "type": "topic",
+      "value": "Small Talk"
+    },
+    {
+      "type": "topic",
+      "value": "Moving Forward"
+    },
+    {
+      "type": "topic",
+      "value": "Pricing"
+    },
+    {
+      "type": "topic",
+      "value": "Next Steps"
+    },
+    {
+      "type": "topic",
+      "value": "Wrap-Up"
+    }
+  ],
+  "trackers": [
+    {
+      "name": "Magnite Link",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "CTV",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 4
+    },
+    {
+      "name": "Panorama ID",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "All Competitors",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "OpenAds",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Managed Service",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 1
+    },
+    {
+      "name": "Spotify",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Direct IO",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "OTT",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Pause Ads",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Google DV360 - Competition",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Native",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Budget (tracker)",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 21
+    },
+    {
+      "name": "SPO",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "The Trade Desk (TTD)  - Competition",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Products/Solutions (All)",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 1
+    },
+    {
+      "name": "Signals",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 1
+    },
+    {
+      "name": "LSA - Tracker",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Objections (tracker)",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 7
+    },
+    {
+      "name": "Clearline",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Multi bid",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Sports",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 8
+    },
+    {
+      "name": "OpenX - Competition",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Demand Manager - Tracker",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "EID",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "HEMs",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Magnite Service - Tracker",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Buyer Marketplaces",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Auction Package",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Live",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 12
+    },
+    {
+      "name": "DSP Facilitator",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "AAIDs",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Tiles - Tracker",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Decision process (tracker)",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Freewheel - Competitor",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Yahoo",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Prebid Yield Optimization",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "OMS",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Tiles",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "MEM",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Pub Direct Deals",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Activate",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 1
+    },
+    {
+      "name": "IDFAs",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Shared ID",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Playwire",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Amazon",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "DV360",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 1
+    },
+    {
+      "name": "Magnite Access",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "GAM - Competition",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "TTD",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Appnexus - Competition",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Amazon - Competition",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Index Exchange - Competition",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "UID 2.0",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Mountain",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Yahoo / Backstage",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "X",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Magnite link - Tracker",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Viant",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "2.6 podding",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "QBR",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Pricing (tracker)",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 14
+    },
+    {
+      "name": "RAMP ID",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Index Exchange",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "OpenPath",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Direct Placement",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Curator - Tracker",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "SpringServe",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Floor Prices/Rates",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Mobile App",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Pubmatic -  Competitor",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Magnite Showcase",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 1
+    },
+    {
+      "name": "Business goals (tracker)",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Share of Voice",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Discount (tracker)",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "QBR Rollout",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "ID5",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Audio",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "TripleLift -  Competition",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "OpenPath - Competition",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "MAIDs",
+      "matches": [],
+      "type": "KEYWORD",
+      "count": 0
+    },
+    {
+      "name": "Customer pain",
+      "matches": [],
+      "type": "SMART",
+      "count": 1
+    }
+  ],
+  "links": [
+    {
+      "kind": "call",
+      "url": "https://us-78146.app.gong.io/call?id=7264530111852323899"
+    }
+  ],
+  "source": "transcript+summary",
+  "hasTranscript": true
+}

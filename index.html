@@ -10,30 +10,35 @@
     <style>
         /* ========== CSS VARIABLES ========== */
         :root {
-            /* Brand Gradients */
-            --mg-hero-gradient: linear-gradient(135deg, #1C0033 0%, #360079 40%, #6B1FB3 100%);
-            --mg-surface-gradient: linear-gradient(180deg, #220044 0%, #3C1275 100%);
+            /* OBZ-aligned tokens mapped onto existing var names */
+            /* Brand / Accents */
+            --color-brand-primary: #0cdeaa;
+            --mg-cyan: #0cdeaa;
+            --mg-green: #21ff87; /* retained for content semantics */
+            --mg-gold: #ffd400;  /* retained for content semantics */
+
+            /* Spectral / Bifrost */
+            --bifrost-spectral-stops: #ff004c 0%, #ff7a00 16%, #ffd400 33%, #21ff87 50%, #00c2ff 66%, #6a5cff 83%, #d400ff 100%;
+            --bifrost-gradient: linear-gradient(90deg, var(--bifrost-spectral-stops));
+            --bifrost-glow: drop-shadow(0 0 20px rgba(12, 222, 170, 0.35));
 
             /* Surfaces */
-            --mg-surface-0: #0F0120;
-            --mg-surface-1: #220044;
-            --mg-surface-2: #3C1275;
+            --mg-hero-gradient: #000000; /* OBZ: pure black canvas */
+            --mg-surface-gradient: linear-gradient(180deg, #121212 0%, #121212 100%);
+            --mg-surface-0: #000000;
+            --mg-surface-1: #121212;
+            --mg-surface-2: #1a1a1a;
 
             /* Text */
-            --mg-text-primary: #FFFFFF;
-            --mg-text-secondary: #D1B3FF;
-            --mg-text-meta: #9E9E9E;
-
-            /* Accents */
-            --mg-cyan: #00C2FF;
-            --mg-green: #6DFF8B;
-            --mg-gold: #FFC857;
+            --mg-text-primary: #f8f8f8;
+            --mg-text-secondary: #d0d0d0;
+            --mg-text-meta: #888888;
 
             /* Borders & Effects */
-            --mg-border: rgba(255, 255, 255, 0.08);
-            --mg-ring: rgba(0, 194, 255, 0.35);
-            --mg-shadow-elev-1: 0 8px 24px rgba(28, 0, 51, 0.45);
-            --mg-shadow-elev-2: 0 16px 40px rgba(54, 0, 121, 0.40);
+            --mg-border: #2a2a2a;
+            --mg-ring: rgba(12, 222, 170, 0.35);
+            --mg-shadow-elev-1: 0 6px 12px rgba(0, 0, 0, 0.25);
+            --mg-shadow-elev-2: 0 10px 20px rgba(0, 0, 0, 0.3);
 
             /* Radii */
             --mg-radius-card: 20px;
@@ -41,16 +46,16 @@
 
             /* Motion */
             --mg-duration-fast: 150ms;
-            --mg-duration: 200ms;
+            --mg-duration: 200ms; /* OBZ recommends ~0.2s */
             --mg-duration-slow: 300ms;
-            --mg-ease: cubic-bezier(0.20, 0.60, 0.20, 1.00);
+            --mg-ease: ease;
 
-            /* Spacing */
+            /* Spacing (Golden Ratio scale) */
             --spacing-xs: 8px;
-            --spacing-sm: 12px;
-            --spacing-md: 20px;
-            --spacing-lg: 32px;
-            --spacing-xl: 52px;
+            --spacing-sm: 13px;
+            --spacing-md: 21px;
+            --spacing-lg: 34px;
+            --spacing-xl: 55px;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -96,10 +101,7 @@
             font-weight: 700;
             letter-spacing: -0.01em;
             margin-bottom: var(--spacing-md);
-            background: linear-gradient(135deg, var(--mg-text-primary) 0%, var(--mg-text-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--mg-text-primary);
         }
 
         h3 {
@@ -153,7 +155,7 @@
             padding: 0 var(--spacing-lg);
         }
 
-        /* ========== HERO SECTION ========== */
+        /* ========== HERO SECTION (OBZ: pure black with subtle paneling) ========== */
         .hero {
             background: var(--mg-hero-gradient);
             min-height: 100vh;
@@ -171,7 +173,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(107, 31, 179, 0.3) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -202,14 +204,14 @@
             border-radius: var(--mg-radius-card);
             padding: var(--spacing-lg);
             margin: var(--spacing-xl) 0;
-            box-shadow: var(--mg-shadow-elev-1);
+            box-shadow: none;
             animation: fadeInUp 0.8s var(--mg-ease) 0.4s both;
             transition: transform var(--mg-duration) var(--mg-ease), box-shadow var(--mg-duration) var(--mg-ease);
         }
 
         .quote-card:hover {
             transform: translateY(-2px);
-            box-shadow: var(--mg-shadow-elev-2);
+            box-shadow: 0 0 0 1px var(--mg-border);
         }
 
         .quote-header {
@@ -242,7 +244,7 @@
 
         .section-divider {
             height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--mg-border) 50%, transparent 100%);
+            background: var(--mg-border);
             margin: var(--spacing-xl) 0;
         }
 
@@ -271,13 +273,13 @@
             border-radius: var(--mg-radius-card);
             padding: var(--spacing-lg);
             margin-bottom: var(--spacing-lg);
-            box-shadow: var(--mg-shadow-elev-1);
+            box-shadow: none;
             transition: transform var(--mg-duration) var(--mg-ease), box-shadow var(--mg-duration) var(--mg-ease);
         }
 
         .content-card:hover {
             transform: translateY(-2px);
-            box-shadow: var(--mg-shadow-elev-2);
+            box-shadow: 0 0 0 1px var(--mg-border);
         }
 
         .content-card h3 {
@@ -312,7 +314,7 @@
 
         /* ========== ACCENT CARDS ========== */
         .card-cyan {
-            border-left: 3px solid var(--mg-cyan);
+            border-left: 2px solid var(--color-brand-primary);
         }
 
         .card-cyan .section-badge {
@@ -321,7 +323,7 @@
         }
 
         .card-green {
-            border-left: 3px solid var(--mg-green);
+            border-left: 2px solid var(--color-brand-primary);
         }
 
         .card-green .section-badge {
@@ -330,7 +332,7 @@
         }
 
         .card-gold {
-            border-left: 3px solid var(--mg-gold);
+            border-left: 2px solid var(--color-brand-primary);
         }
 
         .card-gold .section-badge {
@@ -383,21 +385,21 @@
 
         /* ========== CALLOUT ========== */
         .callout {
-            background: rgba(0, 194, 255, 0.05);
-            border: 1px solid var(--mg-cyan);
+            background: rgba(18, 18, 18, 0.6);
+            border: 1px solid var(--mg-border);
             border-radius: var(--mg-radius-card);
             padding: var(--spacing-md);
             margin: var(--spacing-lg) 0;
         }
 
         .callout-success {
-            background: rgba(109, 255, 139, 0.05);
-            border-color: var(--mg-green);
+            background: rgba(12, 222, 170, 0.06);
+            border-color: rgba(12, 222, 170, 0.5);
         }
 
         .callout-warning {
-            background: rgba(255, 200, 87, 0.05);
-            border-color: var(--mg-gold);
+            background: rgba(255, 212, 64, 0.06);
+            border-color: rgba(255, 212, 64, 0.5);
         }
 
         .callout p {
@@ -472,9 +474,386 @@
         section[data-visible="true"] {
             animation: fadeInUp 0.8s var(--mg-ease) both;
         }
+
+        /* ========== CONTEXT ENGINEERING ANIMATIONS ========== */
+        .context-flow-diagram {
+            position: relative;
+            background: var(--mg-surface-gradient);
+            border: 1px solid var(--mg-border);
+            border-radius: var(--mg-radius-card);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .context-center {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, var(--mg-green), var(--mg-cyan));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(109, 255, 139, 0.4);
+            z-index: 10;
+        }
+
+        .context-center-text {
+            text-align: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .context-center-subtext {
+            font-size: 12px;
+            color: var(--mg-surface-0);
+            opacity: 0.8;
+        }
+
+        /* Orbiting strategy nodes */
+        .strategy-orbit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .strategy-node {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: var(--mg-surface-1);
+            border: 2px solid var(--strategy-color, var(--mg-cyan));
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px var(--strategy-glow, rgba(0, 194, 255, 0.3));
+            transition: all var(--mg-duration) var(--mg-ease);
+            cursor: pointer;
+        }
+
+        .node-write:hover {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 0 50px var(--strategy-glow, rgba(0, 194, 255, 0.5));
+        }
+
+        .node-select:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 50px var(--strategy-glow, rgba(0, 194, 255, 0.5));
+        }
+
+        .node-compress:hover {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 0 50px var(--strategy-glow, rgba(0, 194, 255, 0.5));
+        }
+
+        .node-isolate:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 50px var(--strategy-glow, rgba(0, 194, 255, 0.5));
+        }
+
+        .strategy-node-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--strategy-color, var(--mg-cyan));
+            margin-bottom: 4px;
+        }
+
+        .strategy-node-desc {
+            font-size: 10px;
+            color: var(--mg-text-secondary);
+            text-align: center;
+            padding: 0 8px;
+            line-height: 1.3;
+        }
+
+        /* Position nodes */
+        .node-write {
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            --strategy-color: var(--mg-cyan);
+            --strategy-glow: rgba(0, 194, 255, 0.3);
+        }
+
+        .node-select {
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+            --strategy-color: var(--mg-green);
+            --strategy-glow: rgba(109, 255, 139, 0.3);
+        }
+
+        .node-compress {
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            --strategy-color: var(--mg-gold);
+            --strategy-glow: rgba(255, 200, 87, 0.3);
+        }
+
+        .node-isolate {
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+            --strategy-color: #6B1FB3;
+            --strategy-glow: rgba(107, 31, 179, 0.3);
+        }
+
+        /* Animated particles/tokens flowing */
+        .token-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--mg-green);
+            border-radius: 50%;
+            opacity: 0;
+            animation: tokenFlow 4s infinite;
+            box-shadow: 0 0 10px var(--mg-green);
+        }
+
+        @keyframes tokenFlow {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: var(--token-end) scale(0.5);
+            }
+        }
+
+        .particle-1 {
+            top: 50%;
+            left: 50%;
+            --token-end: translate(-200px, -150px);
+            animation-delay: 0s;
+        }
+
+        .particle-2 {
+            top: 50%;
+            left: 50%;
+            --token-end: translate(200px, 0);
+            animation-delay: 1s;
+        }
+
+        .particle-3 {
+            top: 50%;
+            left: 50%;
+            --token-end: translate(-200px, 150px);
+            animation-delay: 2s;
+        }
+
+        .particle-4 {
+            top: 50%;
+            left: 50%;
+            --token-end: translate(200px, 150px);
+            animation-delay: 3s;
+        }
+
+        .particle-5 {
+            top: 50%;
+            left: 50%;
+            --token-end: translate(-200px, 0);
+            animation-delay: 0.5s;
+        }
+
+        .particle-6 {
+            top: 50%;
+            left: 50%;
+            --token-end: translate(200px, -150px);
+            animation-delay: 1.5s;
+        }
+
+        /* Connecting lines */
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--mg-green), transparent);
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+        }
+
+        .line-top {
+            top: 30%;
+            left: 50%;
+            width: 2px;
+            height: 100px;
+            transform: translateX(-50%);
+            background: linear-gradient(180deg, transparent, var(--mg-cyan), transparent);
+        }
+
+        .line-right {
+            top: 50%;
+            right: 20%;
+            width: 150px;
+            transform: translateY(-50%);
+            background: linear-gradient(90deg, transparent, var(--mg-green), transparent);
+        }
+
+        .line-bottom {
+            bottom: 30%;
+            left: 50%;
+            width: 2px;
+            height: 100px;
+            transform: translateX(-50%);
+            background: linear-gradient(180deg, transparent, var(--mg-gold), transparent);
+        }
+
+        .line-left {
+            top: 50%;
+            left: 20%;
+            width: 150px;
+            transform: translateY(-50%);
+            background: linear-gradient(90deg, transparent, #6B1FB3, transparent);
+        }
+
+        /* Strategy comparison animation */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .comparison-side {
+            background: var(--mg-surface-gradient);
+            border: 1px solid var(--mg-border);
+            border-radius: var(--mg-radius-card);
+            padding: var(--spacing-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-bad {
+            border-left: 3px solid #FF5757;
+        }
+
+        .comparison-good {
+            border-left: 3px solid var(--mg-green);
+        }
+
+        .comparison-label {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--mg-radius-chip);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .label-bad {
+            background: rgba(255, 87, 87, 0.2);
+            color: #FF5757;
+        }
+
+        .label-good {
+            background: rgba(109, 255, 139, 0.2);
+            color: var(--mg-green);
+        }
+
+        .context-bar {
+            height: 40px;
+            background: var(--mg-surface-0);
+            border-radius: 8px;
+            margin: var(--spacing-sm) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .context-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--mg-green), var(--mg-cyan));
+            transition: width 1s var(--mg-ease);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .context-fill-bad {
+            background: linear-gradient(90deg, #FF5757, #FF9999);
+            animation: contextOverflow 2s infinite;
+        }
+
+        @keyframes contextOverflow {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .comparison-side[data-visible="true"] .context-fill {
+            width: var(--fill-width, 50%);
+        }
+
+        @media (max-width: 768px) {
+            .context-flow-diagram {
+                min-height: 500px;
+            }
+
+            .strategy-node {
+                width: 90px;
+                height: 90px;
+            }
+
+            .strategy-node-title {
+                font-size: 12px;
+            }
+
+            .strategy-node-desc {
+                font-size: 9px;
+            }
+
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== OBZ BIFROST BRIDGE ========== */
+        .bifrost-bridge {
+            position: fixed;
+            inset: -10% -40% auto -40%;
+            height: 28vh;
+            background: var(--bifrost-gradient);
+            filter: blur(12px) saturate(140%) contrast(110%);
+            opacity: 0.12;
+            transform: translate3d(0,0,0);
+            animation: bifrost-drift 14s ease-in-out infinite alternate;
+            mask: radial-gradient(120% 60% at 50% 40%, #000 60%, transparent 62%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes bifrost-drift {
+            from { transform: translate3d(-8%, -2%, 0) rotate(-6deg); }
+            to   { transform: translate3d(8%,  2%, 0) rotate(6deg); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .bifrost-bridge { animation: none; }
+        }
     </style>
 </head>
 <body>
+    <div class="bifrost-bridge" aria-hidden="true"></div>
     <!-- HERO -->
     <div class="hero">
         <div class="hero-content container">
@@ -618,22 +997,93 @@
 
             <div class="content-card card-green">
                 <h3>The Four Core Context Management Strategies</h3>
-                <div class="mode-grid">
-                    <div class="mode-block" style="--accent-color: var(--mg-green);">
-                        <h4>Write</h4>
-                        <p>Save information outside the context window (external memory/databases)</p>
+                <p style="color: var(--mg-text-secondary); margin-bottom: var(--spacing-lg);">Watch how these strategies work together to manage AI context efficiently</p>
+
+                <!-- Animated Context Flow Diagram -->
+                <div class="context-flow-diagram">
+                    <!-- Connecting lines -->
+                    <div class="connection-line line-top"></div>
+                    <div class="connection-line line-right"></div>
+                    <div class="connection-line line-bottom"></div>
+                    <div class="connection-line line-left"></div>
+
+                    <!-- Animated particles/tokens -->
+                    <div class="token-particle particle-1"></div>
+                    <div class="token-particle particle-2"></div>
+                    <div class="token-particle particle-3"></div>
+                    <div class="token-particle particle-4"></div>
+                    <div class="token-particle particle-5"></div>
+                    <div class="token-particle particle-6"></div>
+
+                    <!-- Center: AI Agent -->
+                    <div class="context-center">
+                        <div class="context-center-text">
+                            <div>AI Agent</div>
+                            <div class="context-center-subtext">Context Window</div>
+                        </div>
                     </div>
-                    <div class="mode-block" style="--accent-color: var(--mg-green);">
-                        <h4>Select</h4>
-                        <p>Pull in only relevant information when needed (retrieval)</p>
+
+                    <!-- Strategy nodes orbiting the center -->
+                    <div class="strategy-orbit">
+                        <div class="strategy-node node-write">
+                            <div class="strategy-node-title">WRITE</div>
+                            <div class="strategy-node-desc">Save to external memory</div>
+                        </div>
+
+                        <div class="strategy-node node-select">
+                            <div class="strategy-node-title">SELECT</div>
+                            <div class="strategy-node-desc">Retrieve relevant data</div>
+                        </div>
+
+                        <div class="strategy-node node-compress">
+                            <div class="strategy-node-title">COMPRESS</div>
+                            <div class="strategy-node-desc">Summarize & condense</div>
+                        </div>
+
+                        <div class="strategy-node node-isolate">
+                            <div class="strategy-node-title">ISOLATE</div>
+                            <div class="strategy-node-desc">Separate contexts</div>
+                        </div>
                     </div>
-                    <div class="mode-block" style="--accent-color: var(--mg-green);">
-                        <h4>Compress</h4>
-                        <p>Summarize/condense to retain only essential tokens</p>
+                </div>
+            </div>
+
+            <!-- Animated Comparison: With vs Without Context Engineering -->
+            <div class="content-card card-green">
+                <h3>Visual Impact: Context Engineering in Action</h3>
+                <p style="color: var(--mg-text-secondary); margin-bottom: var(--spacing-lg);">See the difference in context efficiency</p>
+
+                <div class="comparison-container">
+                    <div class="comparison-side comparison-bad" data-visible="false">
+                        <span class="comparison-label label-bad">❌ Without Context Engineering</span>
+                        <h4 style="color: #FF5757; margin-top: var(--spacing-md);">Context Overload</h4>
+                        <div class="context-bar">
+                            <div class="context-fill context-fill-bad" style="--fill-width: 95%;">
+                                95% Full - Context Rot!
+                            </div>
+                        </div>
+                        <ul style="margin-top: var(--spacing-md);">
+                            <li>Accuracy degrades as context grows</li>
+                            <li>Redundant & conflicting information</li>
+                            <li>Agent asks clarifying questions</li>
+                            <li>Slower response times</li>
+                        </ul>
                     </div>
-                    <div class="mode-block" style="--accent-color: var(--mg-green);">
-                        <h4>Isolate</h4>
-                        <p>Separate contexts for different purposes (sub-agents, workspaces)</p>
+
+                    <div class="comparison-side comparison-good" data-visible="false">
+                        <span class="comparison-label label-good">✅ With Context Engineering</span>
+                        <h4 style="color: var(--mg-green); margin-top: var(--spacing-md);">Optimized Context</h4>
+                        <div class="context-bar">
+                            <div class="context-fill" style="--fill-width: 45%;">
+                                45% - Optimal!
+                            </div>
+                        </div>
+                        <ul style="margin-top: var(--spacing-md);">
+                            <li>High-signal, relevant tokens only</li>
+                            <li>Clean, focused information</li>
+                            <li>Zero clarification needed</li>
+                            <li>Fast, accurate responses</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -881,7 +1331,7 @@
     <footer class="footer">
         <div class="container">
             <div class="section-divider" style="margin-bottom: var(--spacing-lg);"></div>
-            <p>Made with <span class="footer-brand">Magnite</span></p>
+            <p style="color: var(--mg-text-meta)">Made by <span class="footer-brand">onBreeze</span></p>
             <p style="margin-top: var(--spacing-xs); font-size: 12px;">Presentation crafted for AI engineering beginners</p>
         </div>
     </footer>
@@ -904,6 +1354,26 @@
         // Observe all sections
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
+        });
+
+        // Observer for comparison cards animation
+        const comparisonObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Trigger animation with a slight delay for stagger effect
+                    setTimeout(() => {
+                        entry.target.setAttribute('data-visible', 'true');
+                    }, 200);
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px'
+        });
+
+        // Observe comparison cards
+        document.querySelectorAll('.comparison-side').forEach(card => {
+            comparisonObserver.observe(card);
         });
 
         // Smooth scroll for anchor links (if you add any)

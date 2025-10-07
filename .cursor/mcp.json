@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "gong": {
+      "command": "node",
+      "args": [
+        "-r",
+        "dotenv/config",
+        "./gong/gong-mcp/dist/index.js"
+      ],
+      "env": {
+        "DOTENV_CONFIG_PATH": "./gong/gong-mcp/.env"
+      }
+    }
+  }
+}

@@ -1,0 +1,265 @@
+{
+  "callId": "7264530111852323899",
+  "title": "Magnite-DV360 Working Group: Live & Formats",
+  "participants": [
+    {
+      "id": "394938976522955364",
+      "name": "Michelle Edelman",
+      "speakerId": "2237453764036639809",
+      "affiliation": "External",
+      "email": "edelmanm@google.com"
+    },
+    {
+      "id": "1627866373460073296",
+      "name": "Anna Hewitt",
+      "role": "Senior Director, Product Strategy",
+      "speakerId": "7582137733182682867",
+      "affiliation": "Internal",
+      "email": "ahewitt@magnite.com"
+    },
+    {
+      "id": "2595786358281059739",
+      "name": "Zones",
+      "speakerId": "5330740015046421139",
+      "affiliation": "Unknown"
+    },
+    {
+      "id": "3004270536455614819",
+      "name": "Tim Heywood",
+      "role": "Programmatic Specialist",
+      "affiliation": "External",
+      "email": "theywood@google.com"
+    },
+    {
+      "id": "3294439738091235605",
+      "name": "Vinod Thomas",
+      "speakerId": "8284207354348541153",
+      "affiliation": "External",
+      "email": "vinodthomas@google.com"
+    },
+    {
+      "id": "3886253306755835759",
+      "name": "Subhakanta Kar",
+      "affiliation": "Unknown",
+      "email": "subhakanta@google.com"
+    },
+    {
+      "id": "5869895537456829605",
+      "role": "Director, Product Management",
+      "affiliation": "Internal",
+      "email": "tnieuwsma@magnite.com"
+    },
+    {
+      "id": "6605708941715422084",
+      "role": "Director, Product Management",
+      "affiliation": "Internal",
+      "email": "akulpa@magnite.com"
+    },
+    {
+      "id": "6678117086990023672",
+      "name": "Samantha McDonald",
+      "role": "Manager, Client Success, DSP Operations",
+      "speakerId": "7126068675670384243",
+      "affiliation": "Internal",
+      "email": "smcdonald@magnite.com"
+    },
+    {
+      "id": "6843901541221024568",
+      "name": "Kelli Kettell",
+      "affiliation": "External",
+      "email": "kellik@google.com"
+    },
+    {
+      "id": "6956339070383628924",
+      "role": "BD Lead",
+      "affiliation": "External",
+      "email": "vcarv@google.com"
+    },
+    {
+      "id": "7049704368682553190",
+      "role": "Director, Technical Operations, Demand",
+      "affiliation": "Internal",
+      "email": "bgarey@magnite.com"
+    },
+    {
+      "id": "7285556916656332938",
+      "name": "Anne Tan",
+      "speakerId": "6728928216170926924",
+      "affiliation": "External",
+      "email": "tananne@google.com"
+    },
+    {
+      "id": "7428336574923181903",
+      "role": "Senior Director, Product Management",
+      "affiliation": "Internal",
+      "email": "crogers@magnite.com"
+    },
+    {
+      "id": "7591582333731830295",
+      "name": "Nick Allen",
+      "role": "Vice President, Product Management",
+      "speakerId": "1958807849257282720",
+      "affiliation": "Internal",
+      "email": "nallen@magnite.com"
+    },
+    {
+      "id": "7889444054235556127",
+      "name": "Amanda Knutson",
+      "role": "Product Marketing Manager",
+      "speakerId": "8670105904601012509",
+      "affiliation": "Internal",
+      "email": "aknutson@magnite.com"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Greetings",
+      "bullets": [
+        "Nick and Michelle greeted each other.",
+        "Samantha asked about a thread, and the group exchanged greetings.",
+        "Samantha continued the conversation with Nick, noting the good attendance.",
+        "Samantha, Zones, and Michelle continued exchanging greetings.",
+        "Anna and Samantha wished each other a happy Friday.",
+        "Nick and Samantha continued their conversation."
+      ],
+      "start": 0,
+      "end": 87.73600006103516
+    },
+    {
+      "heading": "Magnite Notetaker",
+      "bullets": [
+        "Nick asked about the \"magnite notetaker,\" and the group discussed whether they were comfortable with its presence, with no one knowing who it was.",
+        "Nick and Zones confirmed that the group was okay with the \"magnite notetaker\" transcribing the call, and Zones mentioned using Google transcripts.",
+        "Zones greeted Michelle, who had joined late, and the group continued discussing the \"magnite notetaker.\"",
+        "Nick and Zones acknowledged the discussion about the \"magnite notetaker.\""
+      ],
+      "start": 87.73600006103516,
+      "end": 172.406005859375
+    },
+    {
+      "heading": "MLB Test Case Study",
+      "bullets": [
+        "Michelle provided context about an email she had sent regarding a potential case study, and Anna agreed that it would be great to have a partner-involved case study.",
+        "Michelle and Anna discussed focusing the case study on the MLB test, as they had permission from GoDaddy to go external with it.",
+        "The group discussed the possibility of including both the MLB test and the Disney and Dick's Sporting Goods deals in the case study, considering potential concerns about having multiple clients in th…",
+        "Anna asked Nick for ideas on how to frame the efficiency of the live campaigns for the case study.",
+        "Nick discusses the challenges of pricing, noting that publishers want more money while buyers want to spend less. He suggests that Magnite's ability to spread the load during live events could be an …",
+        "Michelle and Anna discuss whether this data is available from the MLB test, with Anna noting that the focus was more on proving DB 360's live pacing capabilities.",
+        "Michelle inquires if the live pacing feature is in use for the Dick's Sporting Goods deal, and Nick explains that it is not applicable for PMP deals, as it is only used for PG setups, such as the one…"
+      ],
+      "start": 172.406005859375,
+      "end": 553.4959716796875
+    },
+    {
+      "heading": "Live Pacing Challenges",
+      "bullets": [
+        "Nick and Vinod discuss the concept of prefetching, with Vinod seeking clarification on the potential concerns, such as DV3 dropping the bits or the buyers buying all the available inventory. Nick exp…",
+        "Vinod apologizes and then asks Anna to go ahead. Vinod then shares his concerns about the customer preference for spending their budget throughout the 3-hour window versus front-loading the spend.",
+        "He notes that the game's performance during the 3-hour window is uncertain, and it may be better to front-load the spend. Vinod acknowledges that from the publisher's standpoint, they may prefer cont…",
+        "Nick explains that their target is to have the majority of the spend occur after the marquee moment of the game (e.g., kickoff or first pitch) rather than in the shoulder content before the game star…",
+        "Nick notes that this approach helps ensure they can deliver the full budget, which can be challenging in live events where there is a risk of either under-delivering or over-delivering significantly.",
+        "Vinod suggests a few ways to address the concern about spending on shoulder content: 1) setting up the campaign to only start when the event is confirmed to be happening, and 2) having separate deals…",
+        "Nick discusses recent conversations at IAB World, where some publishers have expressed a desire to have their ad inventory treated as a \"blob\" rather than being described separately from the content.…",
+        "Vinod and Anna acknowledge this point."
+      ],
+      "start": 553.4959716796875,
+      "end": 1059.0260009765625
+    },
+    {
+      "heading": "Inventory Representation",
+      "bullets": [
+        "Nick and Zones discuss the availability of data from the recent test campaign run by GoDaddy. Nick notes that they have lost the hourly data, as it is only persisted for 40 days.",
+        "Zones and Anna agree that the goal of the test campaign was to ensure delivery and test best practices. They decide to focus the discussion on this specific, successful campaign setup."
+      ],
+      "start": 1059.0260009765625,
+      "end": 1114.7760009765625
+    },
+    {
+      "heading": "GoDaddy Campaign Metrics",
+      "bullets": [
+        "Michelle suggests framing the case study around how to effectively target a single sports league over a short period, highlighting the logistics and any insights on CPM performance compared to other …",
+        "Anna and Zones acknowledge that they may not have the specific CPM benchmarking data that was mentioned earlier.",
+        "Michelle, Anna, and Zones discuss the available metrics from the GoDaddy campaign, such as unique reach and cost per unique reach. They note the challenge of generalizing the numbers for external use.",
+        "Nick and Anna discuss the potential value of comparing the cost per unique reach for the live sports campaign versus other baseline or standard CTV campaigns, as the live content is typically more pr…",
+        "Michelle likes the idea, and Zones agrees that it would be more efficient if the solution seems cheaper than linear."
+      ],
+      "start": 1114.7760009765625,
+      "end": 1291.5460205078125
+    },
+    {
+      "heading": "Cost Comparison",
+      "bullets": [
+        "Nick suggests that making the solution seem cheaper than linear is a good idea, and Michelle agrees, noting that it's important to showcase why buying live programmatically is advantageous compared t…",
+        "Nick suggests that buying over the duration of an event may be a good cost story, especially when the inventory is biddable and not premium guaranteed (PG). He explains that there may be a lot of dem…"
+      ],
+      "start": 1291.5460205078125,
+      "end": 1376.64599609375
+    },
+    {
+      "heading": "Buying Duration",
+      "bullets": [
+        "Michelle asks if most buyers are not buying the duration of the game, and Nick confirms that they try to, but the challenge is balancing their budget and not under-delivering. He explains that there …",
+        "Zones mentions that they have recently heard from a publisher that they see a bunch of PMP (programmatic guaranteed) avails open up at the end of the quarter, as a lot of the PG deals have been fulfi…",
+        "Michelle and Nick discuss how biddable inventory may be more advantageous than PG, as with PG, the publisher is just trying to deliver the full commitment, while with biddable, there are more opportu…"
+      ],
+      "start": 1376.64599609375,
+      "end": 1551.8360595703125
+    },
+    {
+      "heading": "Programmatic Opportunities",
+      "bullets": [
+        "Nick discussed the potential opportunities in sports programming, particularly in the postseason and playoffs, where there may be more programmatic supply available. He acknowledged that he is not a …",
+        "Michelle agreed, noting that there are also opportunities in niche sports like cricket to reach affluent audiences in the US at lower CPMs compared to more mainstream sports."
+      ],
+      "start": 1551.8360595703125,
+      "end": 1666.2659912109375
+    },
+    {
+      "heading": "Discussion Summary",
+      "bullets": [
+        "Nick joked that he now knows the term \"puck drop\" from hockey. Anna noted that the Magnite note-taker was helpful and that they had a good discussion of potential ideas, including simplifying the GoD…",
+        "Zones said they would update the template and send it to Magnite for feedback within a week. Michelle confirmed that Magnite is okay with Zones using their template and just adding Zones' logo.",
+        "Anna agreed, stating that Magnite is fine with whatever works best for Zones' buyers.",
+        "Anna asked Zones if they need anything else from Magnite, and Zones said they don't think they need anything further, as Magnite can just provide the CPM data. Anna suggested that Zones still send th…",
+        "Michelle asked if Amanda needs to approve anything since Zones will be using Magnite's logo. Amanda said she needs to check with the content creation team, as they typically lead on case studies, but…",
+        "Amanda said she will gather any marketing materials on Magnite's live stream accelerator or white papers and share them with the Zones team. Michelle confirmed that this would be helpful.",
+        "The participants thanked each other and wished for a good weekend."
+      ],
+      "start": 1666.2659912109375,
+      "end": 1800.865966796875
+    }
+  ],
+  "actionItems": [
+    {
+      "text": "Zones will update their case study template and send it to the Magnite team within the next week or so for feedback.",
+      "start": 1694.2860107421875
+    },
+    {
+      "text": "Amanda will check with her content creation team regarding the approval process for using the Magnite logo on the case study template.",
+      "start": 1755.595947265625
+    },
+    {
+      "text": "Amanda will gather marketing materials on the live stream accelerator and share them with Michelle and Zones.",
+      "start": 1790.0260009765625
+    },
+    {
+      "text": "Michelle and Zones will pull CPM data for the Godaddy campaign.",
+      "start": 1737.9659423828125
+    },
+    {
+      "text": "Michelle and Zones will send the draft case study to Anna for review and potential additions.",
+      "start": 1741.9560546875
+    }
+  ],
+  "topics": [
+    "Call Setup",
+    "Small Talk",
+    "Moving Forward",
+    "Pricing",
+    "Next Steps",
+    "Wrap-Up"
+  ],
+  "source": "transcript+summary",
+  "hasTranscript": true,
+  "derived": false
+}

@@ -1,3 +1,11 @@
+---
+
+## 2025-10-06 12:20 PDT — Gong MCP Docs
+
+- Added `Gong-dash-docs.md` with auth, endpoints, rate limits, headers, and MCP usage notes.
+- Noted env var alignment needed: use `GONG_ACCESS_KEY`/`GONG_ACCESS_SECRET` (current `.env` has `GONG_API_KEY`).
+- Next: add pagination support to `list_calls` and confirm required headers vs tenant docs.
+
 https://x.com/karpathy/status/1886192184808149383?lang=en
 2/2/2025
 Andrej Karpathy

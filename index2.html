@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnite Deck | AI Engineering Slides 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mg-hero-gradient: linear-gradient(135deg, #1C0033 0%, #360079 40%, #6B1FB3 100%);
+            --mg-surface-gradient: linear-gradient(180deg, #220044 0%, #3C1275 100%);
+            --mg-surface-0: #0F0120;
+            --mg-surface-1: #220044;
+            --mg-surface-2: #3C1275;
+            --mg-text-primary: #FFFFFF;
+            --mg-text-secondary: #D1B3FF;
+            --mg-text-meta: #9E9E9E;
+            --mg-cyan: #00C2FF;
+            --mg-green: #6DFF8B;
+            --mg-gold: #FFC857;
+            --mg-border: rgba(255, 255, 255, 0.08);
+            --mg-ring: rgba(0, 194, 255, 0.35);
+            --mg-shadow-1: 0 12px 34px rgba(28, 0, 51, 0.45);
+            --mg-shadow-2: 0 20px 54px rgba(54, 0, 121, 0.4);
+            --mg-radius-card: 20px;
+            --mg-radius-chip: 999px;
+            --mg-duration-fast: 150ms;
+            --mg-duration: 240ms;
+            --mg-duration-slow: 360ms;
+            --mg-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+            --spacing-xs: 8px;
+            --spacing-sm: 12px;
+            --spacing-md: 20px;
+            --spacing-lg: 32px;
+            --spacing-xl: 52px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            :root {
+                --mg-duration-fast: 0ms;
+                --mg-duration: 0ms;
+                --mg-duration-slow: 0ms;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            background: radial-gradient(circle at 10% 20%, rgba(107, 31, 179, 0.35), transparent 55%),
+                        radial-gradient(circle at 80% 0%, rgba(0, 194, 255, 0.18), transparent 40%),
+                        var(--mg-surface-0);
+            color: var(--mg-text-primary);
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--mg-cyan);
+            text-decoration: none;
+            position: relative;
+        }
+
+        a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 1px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--mg-duration) var(--mg-ease);
+        }
+
+        a:hover::after,
+        a:focus-visible::after {
+            transform: scaleX(1);
+        }
+
+        a:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--mg-ring);
+            border-radius: 4px;
+        }
+
+        h1 {
+            font-size: 56px;
+            line-height: 1.15;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        h2 {
+            font-size: 44px;
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            background: linear-gradient(135deg, #FFFFFF, #D1B3FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h3 {
+            font-size: 28px;
+            line-height: 1.25;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h4 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--mg-text-secondary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--slide-accent, var(--mg-cyan));
+            box-shadow: 0 0 12px rgba(0, 194, 255, 0.4);
+        }
+
+        .app-chrome {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: 10px 20px;
+            background: rgba(15, 1, 32, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--mg-radius-chip);
+            backdrop-filter: blur(18px);
+            z-index: 10;
+            box-shadow: var(--mg-shadow-1);
+        }
+
+        .brand-mark {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: var(--mg-hero-gradient);
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-copy {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-copy span {
+            font-size: 14px;
+            color: var(--mg-text-secondary);
+            line-height: 1.2;
+        }
+
+        .brand-copy strong {
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.04em;
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .slide-track {
+            display: flex;
+            transition: transform var(--mg-duration-slow) var(--mg-ease);
+            will-change: transform;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: min(8vh, 120px) min(8vw, 140px);
+            position: relative;
+        }
+
+        .slide::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 20%, rgba(255, 200, 87, 0.08), transparent 60%);
+            opacity: 0;
+            transition: opacity var(--mg-duration) var(--mg-ease);
+            pointer-events: none;
+        }
+
+        .slide[data-active="true"]::after {
+            opacity: 1;
+        }
+
+        .slide-inner {
+            width: min(960px, 100%);
+            background: var(--mg-surface-gradient);
+            border: 1px solid var(--mg-border);
+            border-radius: var(--mg-radius-card);
+            padding: var(--spacing-xl) clamp(28px, 5vw, 64px);
+            box-shadow: var(--mg-shadow-2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-inner::before {
+            content: "";
+            position: absolute;
+            inset: -30% -40% auto;
+            height: 220px;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 194, 255, 0.18), transparent 60%);
+            opacity: 0;
+            transition: opacity var(--mg-duration-slow) var(--mg-ease);
+        }
+
+        .slide[data-active="true"] .slide-inner::before {
+            opacity: 1;
+        }
+
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .slide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: var(--mg-radius-chip);
+            background: rgba(0, 194, 255, 0.08);
+            border: 1px solid rgba(0, 194, 255, 0.25);
+            color: var(--mg-cyan);
+            font-size: 14px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .slide-meta {
+            text-align: right;
+            color: var(--mg-text-secondary);
+            font-size: 14px;
+        }
+
+        .tweet-card {
+            background: rgba(17, 5, 35, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--mg-radius-card);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            display: grid;
+            gap: var(--spacing-sm);
+        }
+
+        .tweet-card strong {
+            font-size: 18px;
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .content-card {
+            background: rgba(34, 0, 68, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--mg-radius-card);
+            padding: var(--spacing-lg);
+            box-shadow: var(--mg-shadow-1);
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--mg-duration) var(--mg-ease), box-shadow var(--mg-duration) var(--mg-ease);
+        }
+
+        .content-card::after {
+            content: "";
+            position: absolute;
+            inset: -20% 40% auto -20%;
+            height: 80%;
+            background: linear-gradient(135deg, rgba(0, 194, 255, 0.18), transparent 70%);
+            opacity: 0;
+            transition: opacity var(--mg-duration) var(--mg-ease);
+        }
+
+        .content-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--mg-shadow-2);
+        }
+
+        .content-card:hover::after {
+            opacity: 1;
+        }
+
+        .callout {
+            border-left: 3px solid var(--slide-accent, var(--mg-cyan));
+            padding-left: var(--spacing-md);
+            color: var(--mg-text-secondary);
+            margin-top: var(--spacing-lg);
+        }
+
+        .callout strong {
+            color: var(--slide-accent, var(--mg-cyan));
+        }
+
+        .link-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: var(--mg-radius-chip);
+            background: rgba(0, 194, 255, 0.12);
+            border: 1px solid rgba(0, 194, 255, 0.25);
+            font-size: 14px;
+            color: var(--mg-cyan);
+            transition: transform var(--mg-duration) var(--mg-ease);
+        }
+
+        .link-chip:hover {
+            transform: translateY(-2px);
+        }
+
+        .deck-controls {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            padding: 14px 24px;
+            background: rgba(15, 1, 32, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--mg-radius-card);
+            backdrop-filter: blur(18px);
+            box-shadow: var(--mg-shadow-1);
+            z-index: 10;
+        }
+
+        .progress-track {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .progress-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+            transition: transform var(--mg-duration) var(--mg-ease), background var(--mg-duration) var(--mg-ease), border-color var(--mg-duration) var(--mg-ease);
+            position: relative;
+        }
+
+        .progress-dot[data-active="true"] {
+            transform: scale(1.2);
+            background: var(--slide-accent, var(--mg-cyan));
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 18px rgba(0, 194, 255, 0.6);
+        }
+
+        .nav-button {
+            background: var(--mg-hero-gradient);
+            color: #FFFFFF;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: var(--mg-radius-chip);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: var(--mg-shadow-1);
+            transition: transform var(--mg-duration-fast) var(--mg-ease), box-shadow var(--mg-duration-fast) var(--mg-ease);
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--mg-shadow-2);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .nav-button:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.35);
+        }
+
+        .slide-footer-meta {
+            font-size: 13px;
+            color: var(--mg-text-meta);
+            margin-top: var(--spacing-lg);
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 42px; }
+            h2 { font-size: 32px; }
+            .slide {
+                padding: min(6vh, 64px) min(6vw, 32px);
+            }
+            .slide-inner {
+                padding: var(--spacing-lg);
+            }
+            .deck-controls {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .slide-track,
+            .nav-button,
+            .content-card,
+            .slide::after,
+            .slide-inner::before,
+            .progress-dot {
+                transition: none !important;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-chrome">
+        <div class="brand-mark">M</div>
+        <div class="brand-copy">
+            <strong>Magnite Deck 2</strong>
+            <span>AI Engineering Pulse</span>
+        </div>
+    </div>
+
+    <main>
+        <div class="slide-track" id="slideTrack">
+            <section class="slide" data-theme="violet" data-active="true">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-badge">Slide 0 · Vibe Check</span>
+                        <div class="slide-meta">
+                            <strong>2 Feb 2025</strong>
+                            <div>@karpathy · <a href="https://x.com/karpathy/status/1886192184808149383">tweet</a></div>
+                        </div>
+                    </div>
+                    <h1>"Vibe Coding" Reality Check</h1>
+                    <p>Andrej Karpathy calls it vibe coding: surrender to the flow, let LLM copilots riff, and accept every change while whispering feature tweaks into the void. Weekend projects ship, sure—but the codebase turns to mist.</p>
+                    <div class="tweet-card">
+                        <strong>Key Observations</strong>
+                        <ul>
+                            <li>Full reliance on AI assistants accelerates UI tweaks and iteration speed.</li>
+                            <li>Hands-off diff reviews grow risky—quality drifts outside human comprehension.</li>
+                            <li>Bug resolution becomes probabilistic: brute-force prompt loops until it compiles.</li>
+                            <li>Great for throwaway experiments, fragile for production fundamentals.</li>
+                        </ul>
+                        <a class="link-chip" href="https://x.com/karpathy/status/1886192184808149383" target="_blank" rel="noopener">Open the original thread →</a>
+                    </div>
+                    <div class="callout">
+                        <strong>Why start here?</strong> It frames the tension: effortless creation versus disciplined engineering. The rest of this deck guides teams back to intentional craft.
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide" data-theme="cyan">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-badge">Slide 1 · Prompt Engineering</span>
+                        <div class="slide-meta">
+                            <a href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Claude Docs</a>
+                        </div>
+                    </div>
+                    <h2>The Art of Effective AI Instructions</h2>
+                    <p>Prompt engineering turns plain language into precise operating instructions for AI systems. No code required—just clarity, context, and intent.</p>
+                    <div class="columns">
+                        <div class="content-card">
+                            <h3>What It Is</h3>
+                            <ul>
+                                <li>Crafting instructions that unlock reliable AI outputs.</li>
+                                <li>Accessible to anyone comfortable writing clear guidance.</li>
+                            </ul>
+                        </div>
+                        <div class="content-card">
+                            <h3>Why It Matters</h3>
+                            <ul>
+                                <li><strong>Cost-effective:</strong> Works with base models—no fine-tuning.</li>
+                                <li><strong>Flexible:</strong> Rapid experimentation becomes the default.</li>
+                                <li><strong>Accessible:</strong> Skill scales with practice, not tooling.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="columns" style="margin-top: var(--spacing-lg);">
+                        <div class="content-card">
+                            <h3>Core Moves</h3>
+                            <ul>
+                                <li>Be clear, specific, and explicit about success criteria.</li>
+                                <li>Show examples—multishot prompts beat long lectures.</li>
+                                <li>Break complex asks into step-by-step reasoning.</li>
+                                <li>Assign roles and structure to maintain tone and format.</li>
+                            </ul>
+                        </div>
+                        <div class="content-card">
+                            <h3>Operating Rhythm</h3>
+                            <ul>
+                                <li>Iterate: draft, test, refine.</li>
+                                <li>Compare prompts systematically rather than guessing.</li>
+                                <li>Document wins so your team reuses effective patterns.</li>
+                            </ul>
+                            <div class="callout">
+                                <strong>Key takeaway:</strong> Clear prompts compound. Small wording shifts unlock radically better results.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide" data-theme="green">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-badge">Slide 2 · Context Engineering</span>
+                        <div class="slide-meta">
+                            <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Anthropic Engineering</a>
+                        </div>
+                    </div>
+                    <h2>Designing the Information Environment</h2>
+                    <p>Context engineering goes beyond the one-off prompt. It curates the entire memory palace an AI agent navigates.</p>
+                    <div class="columns">
+                        <div class="content-card">
+                            <h3>Definition</h3>
+                            <ul>
+                                <li>Manage the smallest, highest-signal token set an agent sees.</li>
+                                <li>Prioritize information quality over quantity to avoid context rot.</li>
+                            </ul>
+                        </div>
+                        <div class="content-card">
+                            <h3>Why Critical</h3>
+                            <ul>
+                                <li>Agents fail more from messy context than weak models.</li>
+                                <li>Finite attention means every injected token must earn its keep.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="columns" style="margin-top: var(--spacing-lg);">
+                        <div class="content-card">
+                            <h3>Four Core Strategies</h3>
+                            <ul>
+                                <li><strong>Write:</strong> Store facts externally for long-term recall.</li>
+                                <li><strong>Select:</strong> Retrieve only the relevant snippets on demand.</li>
+                                <li><strong>Compress:</strong> Summarize to keep tokens tight but informative.</li>
+                                <li><strong>Isolate:</strong> Split workspaces to prevent cross-task pollution.</li>
+                            </ul>
+                        </div>
+                        <div class="content-card">
+                            <h3>Operational Tactics</h3>
+                            <ul>
+                                <li>Use context compaction before hitting token ceilings.</li>
+                                <li>Maintain structured notebooks of key state.</li>
+                                <li>Design tools that are self-contained and resilient.</li>
+                            </ul>
+                            <div class="callout">
+                                <strong>Case in point:</strong> Without curation, agents stall. With curated context, they deliver reports end-to-end—no clarification needed.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="callout" style="margin-top: var(--spacing-lg);">
+                        <strong>Mindset shift:</strong> Treat context like premium RAM—always informative, always tight.
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide" data-theme="gold">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-badge">Slide 3 · RIPER-5 Modes</span>
+                        <div class="slide-meta">
+                            <a href="RIPER-5.md" target="_blank" rel="noopener">Repo Reference</a>
+                        </div>
+                    </div>
+                    <h2>Framework for AI Collaboration</h2>
+                    <p>RIPER-5 separates thinking from doing so copilots stay disciplined. Each mode has a singular purpose—no freelancing.</p>
+                    <div class="columns">
+                        <div class="content-card">
+                            <h3>Mode Breakdown</h3>
+                            <ul>
+                                <li><strong>Research:</strong> Gather info only. Output observations and questions.</li>
+                                <li><strong>Innovate:</strong> Brainstorm possibilities—no commitments.</li>
+                                <li><strong>Plan:</strong> Write the playbook with exhaustive detail.</li>
+                                <li><strong>Execute:</strong> Ship exactly what the plan prescribes.</li>
+                                <li><strong>Review:</strong> Validate line-by-line, flag deviations.</li>
+                            </ul>
+                        </div>
+                        <div class="content-card">
+                            <h3>Protocol Rules</h3>
+                            <ul>
+                                <li>Declare the active mode in every response.</li>
+                                <li>Never advance without explicit permission.</li>
+                                <li>Execution = zero creativity beyond the approved plan.</li>
+                                <li>Review must state whether implementation matches or deviates.</li>
+                            </ul>
+                            <div class="callout">
+                                <strong>Why it matters:</strong> Keeps copilots from overstepping and preserves traceability.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-footer-meta">
+                        <span>Reference: RIPER-5.md</span>
+                        <span>Use case: High-stakes code review loops</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide" data-theme="violet">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-badge">Slide 4 · Deep Agents</span>
+                        <div class="slide-meta">
+                            <a href="https://github.com/langchain-ai/deepagents" target="_blank" rel="noopener">GitHub</a>
+                        </div>
+                    </div>
+                    <h2>From Assistants to Autonomous Systems</h2>
+                    <p>Deep agents plan, decompose, and execute workflows without hand-holding. Think product manager, not chat bubble.</p>
+                    <div class="columns">
+                        <div class="content-card">
+                            <h3>Architecture Pillars</h3>
+                            <ul>
+                                <li>Detailed system prompts packed with guardrails and examples.</li>
+                                <li>Integrated planning tools to track goals and tasks.</li>
+                                <li>Specialized sub-agents with focused context windows.</li>
+                                <li>Persistent file systems for long-lived memory.</li>
+                            </ul>
+                        </div>
+                        <div class="content-card">
+                            <h3>How They Differ</h3>
+                            <ul>
+                                <li>Shallow assistants react. Deep agents anticipate.</li>
+                                <li>They decompose objectives and respect dependencies.</li>
+                                <li>They refine strategies as outcomes evolve.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="columns" style="margin-top: var(--spacing-lg);">
+                        <div class="content-card">
+                            <h3>Why Developers Care</h3>
+                            <ul>
+                                <li><strong>Automation:</strong> Offload multi-hour workflows.</li>
+                                <li><strong>Productivity:</strong> One goal triggers cascades of execution.</li>
+                                <li><strong>Scalability:</strong> Parallel sub-agents keep throughput high.</li>
+                                <li><strong>Intelligence:</strong> Systems learn through reflection and feedback.</li>
+                            </ul>
+                        </div>
+                        <div class="content-card">
+                            <h3>The Road Ahead</h3>
+                            <ul>
+                                <li>Shift from "write code" to "direct autonomous builders".</li>
+                                <li>Promote proactive AI that understands goals, not just prompts.</li>
+                                <li>Set the foundation for next-gen software development teams.</li>
+                            </ul>
+                            <div class="callout">
+                                <strong>Key takeaway:</strong> Deep agents mark the leap from responsive helpers to goal-driven collaborators.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-footer-meta">
+                        <span>Examples: Claude Code · Deep Research · Manus</span>
+                        <span>Frameworks: LangGraph · DeepAgents</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="deck-controls" aria-label="Slide controls">
+        <button class="nav-button" id="prevButton" aria-label="Previous slide">◀</button>
+        <div class="progress-track" role="tablist" aria-label="Slide progress">
+            <button class="progress-dot" data-index="0" aria-label="Go to slide 0" data-active="true"></button>
+            <button class="progress-dot" data-index="1" aria-label="Go to slide 1"></button>
+            <button class="progress-dot" data-index="2" aria-label="Go to slide 2"></button>
+            <button class="progress-dot" data-index="3" aria-label="Go to slide 3"></button>
+            <button class="progress-dot" data-index="4" aria-label="Go to slide 4"></button>
+        </div>
+        <button class="nav-button" id="nextButton" aria-label="Next slide">▶</button>
+    </div>
+
+    <script>
+        const slideTrack = document.getElementById('slideTrack');
+        const slides = Array.from(slideTrack.querySelectorAll('.slide'));
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const dots = Array.from(document.querySelectorAll('.progress-dot'));
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let activeIndex = 0;
+
+        const themes = {
+            violet: 'var(--mg-cyan)',
+            cyan: 'var(--mg-cyan)',
+            green: 'var(--mg-green)',
+            gold: 'var(--mg-gold)'
+        };
+
+        function syncTheme(index) {
+            const theme = slides[index].dataset.theme;
+            const accent = themes[theme] || 'var(--mg-cyan)';
+            document.documentElement.style.setProperty('--slide-accent', accent);
+        }
+
+        function setActiveSlide(index, { focus = false } = {}) {
+            if (index < 0 || index >= slides.length || index === activeIndex) return;
+            activeIndex = index;
+            const offset = -index * 100;
+            slideTrack.style.transform = `translateX(${offset}vw)`;
+
+            slides.forEach((slide, idx) => {
+                slide.dataset.active = String(idx === index);
+            });
+
+            dots.forEach((dot, idx) => {
+                dot.dataset.active = String(idx === index);
+            });
+
+            syncTheme(index);
+
+            if (focus) {
+                slides[index].querySelector('.slide-inner').focus({ preventScroll: true });
+            }
+
+            prevButton.disabled = index === 0;
+            nextButton.disabled = index === slides.length - 1;
+        }
+
+        function handleNext() {
+            setActiveSlide(Math.min(activeIndex + 1, slides.length - 1));
+        }
+
+        function handlePrev() {
+            setActiveSlide(Math.max(activeIndex - 1, 0));
+        }
+
+        nextButton.addEventListener('click', handleNext);
+        prevButton.addEventListener('click', handlePrev);
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = Number(dot.dataset.index);
+                setActiveSlide(index);
+            });
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight' || event.key === 'PageDown') {
+                event.preventDefault();
+                handleNext();
+            }
+            if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+                event.preventDefault();
+                handlePrev();
+            }
+            if (event.key === 'Home') {
+                event.preventDefault();
+                setActiveSlide(0);
+            }
+            if (event.key === 'End') {
+                event.preventDefault();
+                setActiveSlide(slides.length - 1);
+            }
+        });
+
+        // Prime focus states for accessibility
+        slides.forEach(slide => {
+            slide.querySelector('.slide-inner').setAttribute('tabindex', '-1');
+        });
+
+        // Auto-play subtle slide reveal if motion allowed
+        if (!prefersReducedMotion) {
+            let autoAdvance = setInterval(() => {
+                if (activeIndex < slides.length - 1) {
+                    setActiveSlide(activeIndex + 1);
+                } else {
+                    clearInterval(autoAdvance);
+                }
+            }, 12000);
+
+            slideTrack.addEventListener('pointerdown', () => {
+                clearInterval(autoAdvance);
+            }, { once: true });
+        }
+
+        syncTheme(activeIndex);
+        prevButton.disabled = true;
+    </script>
+</body>
+</html>

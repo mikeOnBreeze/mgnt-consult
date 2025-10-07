@@ -1,0 +1,378 @@
+{
+  "callId": "4424082687121865095",
+  "title": "Bell - Magnite // Weekly meeting",
+  "participants": [
+    {
+      "id": "337152947741048163",
+      "role": "Senior Manager, Digital Monetization & Business Operations",
+      "affiliation": "External",
+      "email": "amanda.chinloy@bellmedia.ca"
+    },
+    {
+      "id": "818043279003790025",
+      "name": "Chantelle Colombe",
+      "role": "Digital Audio Monetization Lead",
+      "speakerId": "4021414079536096426",
+      "affiliation": "External",
+      "email": "chantelle.colombe@bellmedia.ca"
+    },
+    {
+      "id": "2802324301109531748",
+      "name": "Allan Tanaka",
+      "role": "Senior Manager - Programmatic Monetization",
+      "speakerId": "2174463968188460547",
+      "affiliation": "External",
+      "email": "allan.tanaka@bellmedia.ca"
+    },
+    {
+      "id": "4522888222708821893",
+      "name": "Ophelie Prince",
+      "role": "Lead, Revenue, Canada",
+      "speakerId": "2188256050097562170",
+      "affiliation": "Internal",
+      "email": "oprince@magnite.com"
+    },
+    {
+      "id": "4528847089137570600",
+      "name": "Chetan Sandhu",
+      "role": "Programmatic operations specialist",
+      "speakerId": "2114087984175195171",
+      "affiliation": "External",
+      "email": "chetan.sandhu@bellmedia.ca"
+    },
+    {
+      "id": "6440765923203808155",
+      "role": "Digital Monetization Specialist",
+      "affiliation": "External",
+      "email": "prerna.kishan@bellmedia.ca"
+    },
+    {
+      "id": "6530074490474458034",
+      "name": "Sophia Benmoussa",
+      "role": "Senior Account Manager, Platform Solutions, Canada",
+      "speakerId": "6422275571455599916",
+      "affiliation": "Internal",
+      "email": "sbenmoussa@magnite.com"
+    },
+    {
+      "id": "6551191595149636034",
+      "name": "Shahanas Babu Shajahan",
+      "role": "Programmatic Operations Manager",
+      "speakerId": "8255223483067911558",
+      "affiliation": "External",
+      "email": "shahanas_babu.shajah@bellmedia.ca"
+    },
+    {
+      "id": "6659481739176497750",
+      "name": "Giulia Lake",
+      "role": "Senior Account Manager, Client Success, Ad Serving",
+      "speakerId": "368407373435503627",
+      "affiliation": "External",
+      "email": "glake@springserve.com"
+    },
+    {
+      "id": "6901054805573129599",
+      "role": "Associate Director, Technical Project Management",
+      "affiliation": "External",
+      "email": "katrina.santos@bellmedia.ca"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Ophelie's farewell",
+      "bullets": [
+        "Ophelie bids farewell and expresses gratitude.",
+        "Ophelie greets Chetan, noting it has been a long time since they last spoke."
+      ],
+      "start": 0.0020000000949949026,
+      "end": 212.5520030518528
+    },
+    {
+      "heading": "Chetan's experience with his niece",
+      "bullets": [
+        "Chetan explains that he only contacts Ophelie when he needs something, such as food or assistance. He shares his experience of babysitting his niece, who has specific preferences for certain songs an…",
+        "Ophelie expresses surprise at the 10-month-old niece's specific preferences for media content. Chetan further elaborates on his attempts to entertain his niece, such as playing basketball highlights …",
+        "Ophelie and Chetan discuss the challenges and joys of being an uncle, with Chetan sharing his experience of hosting several children during a family engagement, which resulted in him having to give u…"
+      ],
+      "start": 212.552001953125,
+      "end": 381.37200927734375
+    },
+    {
+      "heading": "Ophelie's experience as a parent",
+      "bullets": [
+        "Ophelie expresses her wish to be an aunt and shares her own experience of parenting solo while her husband is traveling, including her son's early morning wake-up and the challenges of being the sole…",
+        "Chetan jokingly suggests that being an uncle is the easiest role, and Ophelie agrees.",
+        "Ophelie greets the other participants, Allan and Chantelle, and wishes them a good morning."
+      ],
+      "start": 381.37200927734375,
+      "end": 468.56201171875
+    },
+    {
+      "heading": "Endpoint language and integration",
+      "bullets": [
+        "Allan discusses the agenda, focusing on the priority of integrating Crave with Prime and the need to clarify whether two separate endpoints (one for English and one for French) are required. Ophelie …",
+        "Ophelie and Allan discuss the language of the endpoint, with Ophelie confirming it is not English or French, and Allan asking about the process of enabling the endpoint and the impact on the crave in…",
+        "Sophia shares her screen to show the relevant information to the group.",
+        "Ophelie and Allan confirm they can see Sophia's screen.",
+        "Chantelle raises a question about targeting the English and French channels, and Ophelie provides two potential solutions - creating separate channels for each language or using a custom parameter to…",
+        "Chantelle notes that the custom parameter approach would need to be implemented across all ad sources, and Ophelie acknowledges this, stating that they have a solution in place that they discussed wi…",
+        "Ophelie explains that the preferred solution would be to have two separate channels, one for English and one for French, but she is unsure if this can be set up in time.",
+        "Allan asks about the effort required to set up the streaming once the language split is enabled, and Ophelie defers to Sophia for more information."
+      ],
+      "start": 468.56201171875,
+      "end": 688.2420043945312
+    },
+    {
+      "heading": "Ad sources and reporting",
+      "bullets": [
+        "Sophia and Chantelle discuss the number of ad sources they have, with Chantelle estimating around 10 to 20, including the crave ROS.",
+        "There is a discussion about the terminology used in Springserve versus Streaming, with Allan and the group clarifying the differences between the two platforms.",
+        "Ophelie acknowledges that she should not be using the old Springserve UI, and Sophia provides an overview of the reporting capabilities in the combined Springserve and Streaming UI.",
+        "Allan confirms that the integration of French and English is still pending Amazon's response, and that the update will be posted."
+      ],
+      "start": 688.2420043945312,
+      "end": 842.6820068359375
+    },
+    {
+      "heading": "Platform updates",
+      "bullets": [
+        "Sophia checks with Shahanas about the status of the RDS wrapper fix, which is working on desktop but not on mobile. Shahanas confirms he will look into it.",
+        "Sophia also mentions that the TSN integration is working for both desktop and mobile.",
+        "Shahanas notes that the CTV integration is not receiving any new requests.",
+        "Sophia informs the team that the legacy DV+ dashboard is now available, and Shahanas confirms he can see it after logging out and back in.",
+        "Sophia mentions that she has sent Shahanas the bid request for the app that was sending a weird bundle, and Shahanas confirms he has received it.",
+        "Chantelle also confirms that she can see both the new and old dashboards.",
+        "Sophia inquires about updates on the PNG deals, and Allan explains that the US team at Walter is still working on it, and they are waiting for the team to start spending on the preferred deals.",
+        "Sophia notes a drop in the cadence inventory impressions since the beginning of October, and Shahanas says he will investigate the reporting delay."
+      ],
+      "start": 842.6820068359375,
+      "end": 1082.0419921875
+    },
+    {
+      "heading": "Content channel discussion",
+      "bullets": [
+        "Allan raises a question about the content channel, and Giulia attempts to respond, but her audio is unclear, and the team is unable to hear her.",
+        "Shahanas checks with Chantelle about the status of the PG supply tax for Finecast, and Chantelle confirms that there are no responses from the buy side.",
+        "Allan says he will follow up with Amanda to understand the Finecast delivery status.",
+        "Shahanas explains that the drop in impressions on the Kaden platform is likely due to the lack of response from the buy side on the PG Finecast deals, and he will investigate further to ensure the re…",
+        "Sophia and Allan acknowledge each other.",
+        "Sophia greets Giulia, and Giulia confirms she can now be heard.",
+        "Giulia explains that sometimes her phone automatically connects to the computer, which may have caused an issue with the microphone. She then asks about the discussion on changing the request to Spri…",
+        "Shahanas asks Giulia if it's possible to add a new parameter to capture the content channel from GAM to Spring Serve, and mentions that they tried a macro override but the content channel is not avai…",
+        "Giulia asks Shahanas to look at the current request to better understand what is being passed.",
+        "Shahanas explains that they are currently passing the channel name, which is the ad unit from GAM, in the outgoing bid request as the content channel.",
+        "Shahanas suggests that they could add another key, such as \"content_channel\", and pass the ad unit value in that key.",
+        "Giulia agrees with Shahanas' suggestion and says she can set up the key. She also mentions that they will need to change the targeting to use the new key instead of the channel name.",
+        "Shahanas asks Giulia to confirm the parameter name they should use, and Giulia confirms it should be \"add unit\".",
+        "Shahanas says he will add the \"add unit\" key, and Giulia asks him to show her what he is doing.",
+        "Giulia guides Shahanas on how to set up the \"add unit\" key and the corresponding targeting in the supply tag.",
+        "Shahanas explains that they are using one tag to pull values from multiple content properties, such as CTV, CTV News, and TSN.",
+        "Giulia and Shahanas discuss the current targeting on the channel parameter and the need to create a key-specific targeting for the \"add unit\" values.",
+        "Shahanas discusses the need to pass a specific value for the CTV Amazon Fire channel, and Giulia suggests creating a keys with a value list to target the desired values.",
+        "Shahanas expresses concern about passing a specific value as the content channel, and Giulia suggests targeting the value list and overriding the content settings.",
+        "Giulia provides instructions on how to create a value list in the targeting settings and apply it.",
+        "Shahanas clarifies that they do not want to pass a specific value for the content channel, as it should be based on the traffic, such as CTV traffic.",
+        "Giulia acknowledges the requirement and suggests that splitting the value might not be possible in the current setup.",
+        "Shahanas explains that the requirement is not limited to a specific ad unit, but could involve passing dynamic information like a show name.",
+        "Giulia and Shahanas discuss the limitations of the current approach and the need to revert the changes.",
+        "Giulia acknowledges the misunderstanding and Shahanas indicates that they are still exploring possible solutions."
+      ],
+      "start": 1082.0419921875,
+      "end": 2230.652099609375
+    },
+    {
+      "heading": "Potential product requests",
+      "bullets": [
+        "Allan and Giulia discuss the importance of finding a solution and the potential complexity of implementing a more flexible approach.",
+        "Ophelie expresses interest in discussing potential product requests with Giulia to address the current limitations."
+      ],
+      "start": 2230.652099609375,
+      "end": 2290.092041015625
+    },
+    {
+      "heading": "Data gathering",
+      "bullets": [
+        "Shahanas informs the group that he needs a few minutes to pull some data for an upcoming discussion, and suggests they discuss something else in the meantime.",
+        "Giulia inquires if it is possible to capture the content information before it reaches Google Ad Manager (GAM), to which Shahanas responds that he can only access that information once it hits GAM.",
+        "Giulia asks Shahanas about the original request that goes into GAM and what it looks like.",
+        "Shahanas shares an example of the request to GAM, including the various parameters, and indicates that he can get this information into SpringServe through macros.",
+        "Giulia requests Shahanas to send the GAM request details, and Shahanas confirms that he has shared the information.",
+        "Shahanas explains that he can get the parameters shown in the GAM request, such as content type and rating, into SpringServe through macros.",
+        "Shahanas notes that they are currently not passing the \"content_channel\" parameter in the SpringServe tag, but it is present in the outgoing bid request.",
+        "Giulia explains that the \"channel_name\" parameter in SpringServe is used to populate the \"content_channel\" field."
+      ],
+      "start": 2290.092041015625,
+      "end": 2600.511962890625
+    },
+    {
+      "heading": "Parameter limitations",
+      "bullets": [
+        "Shahanas inquires if there is a way to have two separate values for \"channel_name\" and \"content_channel\" in SpringServe.",
+        "Giulia confirms that there is no way to have two separate values for these two parameters.",
+        "Giulia and Allan discuss the purpose of the \"channel_name\" parameter and how it should be a shorter, more descriptive value rather than a long string.",
+        "Giulia suggests that if the \"channel_name\" parameter is not supposed to be a long string, it should be changed to the actual content channel."
+      ],
+      "start": 2600.511962890625,
+      "end": 2682.662109375
+    },
+    {
+      "heading": "Channel Name Changes",
+      "bullets": [
+        "Shahanas explores the implications of changing the \"channel_name\" parameter to \"CTV news\" and how SpringServe would capture and bucket the requests based on the new value.",
+        "Giulia acknowledges that changing the \"channel_name\" parameter would require updating the targeting for all the supply tags, which could be a significant effort.",
+        "Shahanas and Giulia discuss the setup for all routers, noting that it is not just for the media router, but a consistent setup across the board.",
+        "Giulia suggests making bulk changes via the API to target the keys instead of the channel, as the channel targeting would be more involved. She expresses confidence in being able to make it work.",
+        "Shahanas says they will take the suggestion back, analyze the effort and importance of the signal, and then decide whether to proceed with the changes."
+      ],
+      "start": 2682.662109375,
+      "end": 2866.951904296875
+    },
+    {
+      "heading": "Targeting Approach",
+      "bullets": [
+        "Giulia and Ophelie agree that it's important to find a fixed area, and Ophelie offers to assist with any requests related to this.",
+        "Giulia mentions that support for 2.6 signals is coming soon, though the timeline for streaming is uncertain.",
+        "Allan suggests tabling the discussion for now and working on a solution, which Giulia agrees to follow up on via email.",
+        "Allan and Shahanas discuss the complexity of managing the various supply tags, especially with the upcoming Crave expansion requiring additional ad units to be mapped.",
+        "Allan mentions the upcoming Crave expansion will require a lot of new ad units to be mapped, and Giulia questions why they are targeting on the channel, suggesting they may be able to combine certain…",
+        "Shahanas explains the specific structure of ad unit identities in GAM, with different ad units for each platform and device. He notes they have different demand for different channels, such as LG and…",
+        "Giulia and Shahanas discuss whether it's possible to group certain channels with the same demand to reduce the number of supply tags, but Shahanas expresses concern about future changes in demand.",
+        "Giulia explains that the differentiation in supply tags should be based on the demand attached to them. She suggests that if the channels have the same demand, a single supply tunnel tag can be used,…",
+        "Giulia mentions that channel and key reporting can be different, but since the team does not use many keys, simplifying the setup by not targeting on channels may be a better approach."
+      ],
+      "start": 2866.951904296875,
+      "end": 3239.471923828125
+    },
+    {
+      "heading": "Reporting Requirements",
+      "bullets": [
+        "Chantelle mentions that the current setup was specifically requested by the inventory team, as they need the data split in this manner for their reporting purposes. She is open to exploring a better …",
+        "Giulia suggests that if the inventory team has specific reports they need to run, she can review them and see if the data can be consolidated without the channel targeting, as certain reporting limit…",
+        "Shahanas and Allan acknowledge Giulia's request to review the reporting requirements."
+      ],
+      "start": 3239.471923828125,
+      "end": 3351.48193359375
+    },
+    {
+      "heading": "Group M, DC Connection",
+      "bullets": [
+        "Sophia informs the group that there is a flight end date on the Group M, DC connection, and she needs to remove it to allow spending to resume.",
+        "Giulia and Allan discuss the process of removing the end date and ensuring the inventory is set up correctly for Group M, DC.",
+        "Allan confirms with Sophia that she has removed the end date, and he will let the WPP team know to start spending."
+      ],
+      "start": 3351.48193359375,
+      "end": 3464.382080078125
+    },
+    {
+      "heading": "Ad Domain Detection",
+      "bullets": [
+        "Shahanas inquires about the missing ad domain information in the ad quality tool, and Giulia explains that if the demand side does not pass the ad domain information, SpringServe's detection may not …",
+        "Shahanas inquired about a scenario where the ad domain is not passed from the DSP when a user uploads a creative. Giulia responded that she is unsure if there are cases where the domain is not passed…",
+        "Shahanas stated that the domain should be included by the DSP when a creative is uploaded, as it is required for the creative to be approved.",
+        "Giulia asked Shahanas about the percentage of creatives seen without a domain, and Shahanas explained that when there are issues with a creative, the media file URL is shared, and he uses an ad quali…",
+        "Giulia inquired about the process when Shahanas could not find the creative, and Shahanas responded that he worked with the Cadent team to obtain the creative media file, but without the creative, he…",
+        "Shahanas asked about how the vast hash is created, and Giulia explained that it is created randomly within the Spring Serve system. Giulia also mentioned that she noticed there are many impressions w…",
+        "Shahanas brought up a previous case where Sophia had to manually override the advertiser domain, IAB category, and other information that was missing when the creative went from streaming to Spring S…",
+        "Shahanas noted that when the ad quality tool was initially launched, he was able to see all the ad domains, but over time, some creatives started not showing the domain.",
+        "Giulia discusses the declining ad domain rate and suggests investigating the issue further by creating a ticket. Sophia mentions that the ad quality tool is showing many creatives with no advertiser …",
+        "Giulia acknowledges the internal detection changes happening this month and suggests looking into the specific demands that are not similar according to Magnite.",
+        "Shahanas shares examples of random instances where the ad domain is not detected, including cases where the demand is coming from Magnite Reserve and MCTV without any domain information. Giulia ackno…",
+        "Giulia and Shahanas agree that the lack of domain detection is a concerning issue that needs to be investigated further."
+      ],
+      "start": 3464.382080078125,
+      "end": 4144.44189453125
+    },
+    {
+      "heading": "Radio Canada Creatives",
+      "bullets": [
+        "Chetan mentions that the Radio Canada deal is currently fixed, and the creatives should be approved. Sophia explains that she has to manually approve the creatives as there are many pages of creative…",
+        "Shahanas and Sophia discuss the possibility that the Radio Canada creatives may not be found in the ad quality tool due to the missing domain information."
+      ],
+      "start": 4144.44189453125,
+      "end": 4254.60205078125
+    },
+    {
+      "heading": "Channel Name Override",
+      "bullets": [
+        "Shahanas and Giulia discuss the process of overriding the channel name in Spring Serve to output the correct content channel. Giulia explains that the channel name is relevant only for Magnite and Sp…",
+        "Shahanas acknowledges the understanding and mentions that he will experiment with this approach and discuss the findings in the next meeting.",
+        "Shahanas confirms that he will find the exact value to be passed and discuss it in the next meeting."
+      ],
+      "start": 4254.60205078125,
+      "end": 4389.51220703125
+    },
+    {
+      "heading": "Priorities and Timelines",
+      "bullets": [
+        "Giulia confirms that the plan sounds good. Allan provides a summary of the priorities, stating that Crave Prime is the absolute priority for them, and the rest of the items will be addressed in 2022.",
+        "He mentions that they are still working on the entire PG process with Magnite, and they don't have the operations in place yet to make a Magnite PG.",
+        "Sophia and Allan discuss the priorities, including the UID, the PIO deployment, and the audio integration. Allan suggests that if they want to continue with Chantal, they can just add a tag.",
+        "He also mentions the need for dev work and budget to enable Bell's first-party data in Magnite.",
+        "Sophia acknowledges that the first-party data activation in Magnite is not an easy activation.",
+        "Allan and Sophia discuss the timeline for the priorities, with Allan confirming that they are for 2026. Sophia checks with Chetan if he has anything else to add, and Chetan confirms that he does not."
+      ],
+      "start": 4389.51220703125,
+      "end": 4477.2822265625
+    },
+    {
+      "heading": "Amazon Ad Impressions",
+      "bullets": [
+        "Sophia and Chetan discuss the Amazon ad impressions. Chetan explains that the limited impressions are due to high sellouts on PG and the tight city-level targeting.",
+        "Sophia suggests running a report to see if they can open up the targeting to the province level.",
+        "Sophia proposes reorganizing the call structure, starting with Spring Serve-related topics, then moving to streaming and DV Plus projects. Shahanas agrees that this was the previous structure, and th…"
+      ],
+      "start": 4477.2822265625,
+      "end": 4652.26220703125
+    },
+    {
+      "heading": "FinCast Integration",
+      "bullets": [
+        "The group agrees to try the new structure, and Sophia mentions that she has already fixed the issue with the requests. Allan and Sophia discuss the timing of the FinCast integration, noting that they…",
+        "Sophia and Allan conclude the call, wishing each other a good weekend."
+      ],
+      "start": 4652.26220703125,
+      "end": 4695.412109375
+    }
+  ],
+  "actionItems": [
+    {
+      "text": "Shahanas will check on Cadent to see if the number of requests sent from Cadent is matching with what is being received in SpringServe.",
+      "start": 1282.56201171875
+    },
+    {
+      "text": "Giulia will sync with Ophelie on Slack to discuss product requests for SpringServe, specifically regarding the channel override issue, to determine feasibility and effort required.",
+      "start": 2276.181884765625
+    },
+    {
+      "text": "Shahanas will take back the discussion on changing the channel name and analyze the effort and importance of this signal to decide if they want to proceed with the changes.",
+      "start": 2845.011962890625
+    },
+    {
+      "text": "Giulia will send an email about the channel correction solution and figure out all the steps for it.",
+      "start": 2926.89208984375
+    },
+    {
+      "text": "Giulia will investigate why ad domains are not consistently showing in the ad quality tool and create a ticket for this issue, especially if the ad domain rate has been going down.",
+      "start": 3954.302001953125
+    },
+    {
+      "text": "Chetan will double-check with the account manager if there are still issues with specific Radio Canada creatives being blocked and will let Sophia know which ones.",
+      "start": 4185.15185546875
+    },
+    {
+      "text": "Sophia will reorganize the next meeting structure to start with SpringServe-related topics for Giulia, then move to streaming and DV plus projects.",
+      "start": 4567.091796875
+    }
+  ],
+  "topics": [
+    "Call Setup",
+    "Small Talk",
+    "Moving Forward",
+    "Pricing",
+    "Next Steps",
+    "Wrap-Up"
+  ],
+  "source": "transcript+summary",
+  "hasTranscript": true,
+  "derived": false
+}

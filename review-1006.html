@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnite x Cursor/GPT-5 — Session Review</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mg-hero-gradient: linear-gradient(135deg, #1C0033 0%, #360079 40%, #6B1FB3 100%);
+            --mg-surface-gradient: linear-gradient(180deg, #220044 0%, #3C1275 100%);
+            --mg-surface-0: #0F0120;
+            --mg-surface-1: #220044;
+            --mg-surface-2: #3C1275;
+            --mg-surface-3: rgba(255, 255, 255, 0.02);
+            --mg-text-primary: #FFFFFF;
+            --mg-text-secondary: #D1B3FF;
+            --mg-text-meta: #9E9E9E;
+            --mg-cyan: #00C2FF;
+            --mg-green: #6DFF8B;
+            --mg-gold: #FFC857;
+            --mg-border: rgba(255, 255, 255, 0.08);
+            --mg-ring: rgba(0, 194, 255, 0.35);
+            --mg-shadow-1: 0 16px 40px rgba(28, 0, 51, 0.45);
+            --mg-shadow-2: 0 24px 60px rgba(54, 0, 121, 0.4);
+            --mg-radius-card: 20px;
+            --mg-radius-chip: 999px;
+            --mg-duration-fast: 150ms;
+            --mg-duration: 240ms;
+            --mg-duration-slow: 360ms;
+            --mg-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+            --spacing-xs: 8px;
+            --spacing-sm: 12px;
+            --spacing-md: 20px;
+            --spacing-lg: 32px;
+            --spacing-xl: 52px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            :root {
+                --mg-duration-fast: 0ms;
+                --mg-duration: 0ms;
+                --mg-duration-slow: 0ms;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--mg-text-primary);
+            background:
+                radial-gradient(circle at 10% 20%, rgba(107, 31, 179, 0.35), transparent 55%),
+                radial-gradient(circle at 80% 0%, rgba(0, 194, 255, 0.18), transparent 40%),
+                radial-gradient(circle at 10% 90%, rgba(109, 255, 139, 0.12), transparent 45%),
+                var(--mg-surface-0);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--mg-cyan);
+            text-decoration: none;
+            position: relative;
+            transition: color var(--mg-duration) var(--mg-ease);
+        }
+
+        a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 1px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--mg-duration) var(--mg-ease);
+        }
+
+        a:hover::after,
+        a:focus-visible::after {
+            transform: scaleX(1);
+        }
+
+        a:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--mg-ring);
+            border-radius: 4px;
+        }
+
+        h1 {
+            font-size: 56px;
+            line-height: 1.15;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        h2 {
+            font-size: 44px;
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h2 span.gradient {
+            background: linear-gradient(135deg, #FFFFFF, #D1B3FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h3 {
+            font-size: 28px;
+            line-height: 1.25;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--mg-text-secondary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--bullet-color, var(--mg-cyan));
+            box-shadow: 0 0 12px rgba(0, 194, 255, 0.4);
+        }
+
+        code {
+            font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;
+            background: rgba(0, 194, 255, 0.12);
+            color: var(--mg-cyan);
+            border-radius: 6px;
+            padding: 0.1em 0.35em;
+        }
+
+        pre {
+            background: rgba(34, 0, 68, 0.85);
+            border-radius: var(--mg-radius-card);
+            padding: var(--spacing-lg);
+            overflow-x: auto;
+            box-shadow: var(--mg-shadow-1);
+            border: 1px solid rgba(0, 194, 255, 0.12);
+            color: var(--mg-text-secondary);
+        }
+
+        pre code {
+            display: block;
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        .container {
+            width: min(1280px, 100% - 2 * var(--spacing-lg));
+            margin: 0 auto;
+        }
+
+        .hero {
+            position: relative;
+            padding: var(--spacing-xl) 0 calc(var(--spacing-xl) + 40px);
+            background: var(--mg-hero-gradient);
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 200, 87, 0.16), transparent 55%),
+                        radial-gradient(circle at 80% 30%, rgba(0, 194, 255, 0.2), transparent 50%);
+            mix-blend-mode: screen;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            gap: var(--spacing-lg);
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 6px 14px;
+            border-radius: var(--mg-radius-chip);
+            background: rgba(0, 194, 255, 0.15);
+            color: var(--mg-cyan);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 14px 26px;
+            border-radius: var(--mg-radius-chip);
+            background-image: var(--mg-hero-gradient);
+            box-shadow: var(--mg-shadow-1);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: transform var(--mg-duration-fast) var(--mg-ease), box-shadow var(--mg-duration-fast) var(--mg-ease);
+        }
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--mg-shadow-2);
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            margin-top: -40px;
+            padding-bottom: var(--spacing-xl);
+        }
+
+        .section {
+            padding: calc(var(--spacing-xl) + 16px) 0;
+        }
+
+        .section-header {
+            display: grid;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-subtitle {
+            color: var(--mg-text-secondary);
+            max-width: 720px;
+        }
+
+        .grid {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+
+        .grid.four {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .grid.two {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid.three {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .card {
+            position: relative;
+            padding: var(--spacing-lg);
+            border-radius: var(--mg-radius-card);
+            background: var(--mg-surface-gradient);
+            border: 1px solid var(--mg-border);
+            box-shadow: var(--mg-shadow-1);
+            transition: transform var(--mg-duration-fast) var(--mg-ease), box-shadow var(--mg-duration-fast) var(--mg-ease), border-color var(--mg-duration-fast) var(--mg-ease);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--mg-shadow-2);
+            border-color: rgba(0, 194, 255, 0.4);
+        }
+
+        .card h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card .meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--mg-text-meta);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: var(--mg-radius-chip);
+            background: rgba(0, 194, 255, 0.16);
+            color: var(--mg-cyan);
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge.gold {
+            background: rgba(255, 200, 87, 0.16);
+            color: var(--mg-gold);
+        }
+
+        .badge.green {
+            background: rgba(109, 255, 139, 0.16);
+            color: var(--mg-green);
+        }
+
+        .lesson {
+            display: grid;
+            gap: var(--spacing-sm);
+        }
+
+        .lesson-list li {
+            --bullet-color: rgba(0, 194, 255, 0.8);
+        }
+
+        .callout {
+            position: relative;
+            padding: var(--spacing-md);
+            border-radius: var(--mg-radius-card);
+            background: rgba(0, 194, 255, 0.12);
+            border: 1px solid rgba(0, 194, 255, 0.24);
+            color: var(--mg-text-primary);
+            margin-top: var(--spacing-sm);
+        }
+
+        .callout::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            border-left: 3px solid currentColor;
+            opacity: 0.5;
+        }
+
+        .callout strong {
+            color: inherit;
+        }
+
+        .callout.info {
+            color: var(--mg-cyan);
+        }
+
+        .callout.success {
+            color: var(--mg-green);
+            background: rgba(109, 255, 139, 0.12);
+            border-color: rgba(109, 255, 139, 0.32);
+        }
+
+        .callout.warning {
+            color: var(--mg-gold);
+            background: rgba(255, 200, 87, 0.12);
+            border-color: rgba(255, 200, 87, 0.32);
+        }
+
+        .dual {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+
+        .dual.two-column {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+
+        .timeline {
+            display: grid;
+            gap: var(--spacing-md);
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: rgba(0, 194, 255, 0.25);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--mg-cyan);
+            box-shadow: 0 0 12px rgba(0, 194, 255, 0.5);
+        }
+
+        .chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: var(--mg-radius-chip);
+            background: rgba(34, 0, 68, 0.75);
+            border: 1px solid rgba(0, 194, 255, 0.24);
+            color: var(--mg-text-secondary);
+            font-size: 14px;
+            transition: transform var(--mg-duration-fast) var(--mg-ease), background var(--mg-duration-fast) var(--mg-ease);
+        }
+
+        .chip:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 194, 255, 0.16);
+            color: var(--mg-text-primary);
+        }
+
+        footer {
+            padding: var(--spacing-lg) 0 var(--spacing-xl);
+            color: var(--mg-text-meta);
+            text-align: center;
+            background: rgba(15, 1, 32, 0.75);
+            margin-top: var(--spacing-xl);
+        }
+
+        footer a {
+            color: inherit;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 42px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            .hero {
+                padding-top: calc(var(--spacing-xl) + 20px);
+                padding-bottom: calc(var(--spacing-xl));
+            }
+
+            main {
+                margin-top: -24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container hero-content">
+            <span class="hero-eyebrow">Session Review • 2025-10-06</span>
+            <h1>Magnite x Cursor/GPT-5 — Meeting Notes &amp; Debrief</h1>
+            <p class="section-subtitle">
+                A branded wrap-up of today’s working session: what we focused on, the artefacts we produced, and the playbooks your team can reuse to keep momentum with agents, prompts, and Magnite’s UI patterns.
+            </p>
+            <div class="hero-actions">
+                <a class="hero-button" href="#next-steps">Jump to Next Steps →</a>
+                <a class="chip" href="#resources">Resources</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="section" id="executive-summary">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="gradient">Executive Summary</span></h2>
+                    <p class="section-subtitle">
+                        We established a shared language for working with AI agents, practiced Magnite-flavored UI delivery, and lined up the follow-on artefacts that will reinforce the concepts covered live.
+                    </p>
+                </div>
+                <div class="grid four">
+                    <article class="card">
+                        <div class="meta">Focus</div>
+                        <h3>Prompt vs Context Engineering</h3>
+                        <p>Clarified how objectives, rules, and scoped context shape reliable agent outputs across Cursor and Codex.</p>
+                    </article>
+                    <article class="card">
+                        <div class="meta">Outcomes</div>
+                        <h3>Shared Vocabulary &amp; Patterns</h3>
+                        <p>Codified best-practice prompting, set up repeatable project scaffolding, and synced on RIPER‑5 modes.</p>
+                    </article>
+                    <article class="card">
+                        <div class="meta">Deliverables</div>
+                        <h3>HTML Deck &amp; Prompt Playbook</h3>
+                        <p>Next build is a Magnite-styled HTML deck plus a reusable prompt pack for research, plan, execute, and review flows.</p>
+                    </article>
+                    <article class="card">
+                        <div class="meta">Example</div>
+                        <h3>Gong MCP Walkthrough</h3>
+                        <p>Connected a lightweight MCP, using it as a live example of context discipline and plan-first execution.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="project-files">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="gradient">Project File Review</span></h2>
+                    <p class="section-subtitle">
+                        Key artefacts we touched today, so you can jump back into the repo with clear entry points.
+                    </p>
+                </div>
+                <div class="grid two">
+                    <article class="card">
+                        <div class="meta">Deck</div>
+                        <h3><code>index.html</code></h3>
+                        <p>Initial PowerPoint-style deck produced with Claude Code; later restyled against the Magnite system for reference.</p>
+                    </article>
+                    <article class="card">
+                        <div class="meta">Deck</div>
+                        <h3><code>index2.html</code></h3>
+                        <p>Alternate Codex build showcasing gradient hero, slide cards, and motion aligned with the current style guide.</p>
+                    </article>
+                    <article class="card">
+                        <div class="meta">Source</div>
+                        <h3><code>notes-1006-expanded.md</code></h3>
+                        <p>Expanded outline and content base feeding both decks; use this when drafting tailored slides or briefs.</p>
+                    </article>
+                    <article class="card">
+                        <div class="meta">Transcript</div>
+                        <h3><code>meeting-1006.md</code></h3>
+                        <p>Live session transcript capturing the teaching flow and build commentary for future reference.</p>
+                    </article>
+                    <article class="card">
+                        <div class="meta">Style</div>
+                        <h3><code>magnite-style-guide.md</code></h3>
+                        <p>Primary source of gradients, motion, and spacing tokens. Use this as the baseline for client-facing surfaces.</p>
+                    </article>
+                    <article class="card">
+                        <div class="meta">Alternate Style</div>
+                        <h3><code>obz-style-guide.md</code></h3>
+                        <p>OnBreeze house style, useful when you need contrast comparisons or internal-only variations.</p>
+                    </article>
+                    <article class="card">
+                        <div class="meta">Logging</div>
+                        <h3><code>progress.md</code></h3>
+                        <p>Emoji-prefixed log of agent actions — keeps the team aligned on what shipped, when, and by whom.</p>
+                    </article>
+                    <article class="card">
+                        <div class="meta">Framework</div>
+                        <h3><code>RIPER-5.md</code></h3>
+                        <p>Mental model for shepherding agents through Research, Innovate, Plan, Execute, and Review modes.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="core-lessons">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="gradient">Core Lessons &amp; Takeaways</span></h2>
+                    <p class="section-subtitle">
+                        Five anchors that frame how we prompt, plan, and ship work with agents across Magnite’s operating rhythm.
+                    </p>
+                </div>
+                <div class="grid two">
+                    <article class="card lesson">
+                        <span class="badge">Lesson 01</span>
+                        <h3>Prompt vs Context Engineering</h3>
+                        <ul class="lesson-list">
+                            <li>Prompts frame objectives, rules, and closing checklists; contexts ensure only relevant history is loaded.</li>
+                            <li>Keep chats scoped — start a new thread when tackling a separate task to avoid token bloat.</li>
+                            <li>Lead with constraints (what to do / not do) and keep language explicit over verbose.</li>
+                        </ul>
+                        <div class="callout info">
+                            <strong>Practical split:</strong> Taught concepts in one chat, built the Gong MCP in another — cleaner edits and faster resolve.
+                        </div>
+                    </article>
+                    <article class="card lesson">
+                        <span class="badge">Lesson 02</span>
+                        <h3>RIPER-5 Modes</h3>
+                        <ul class="lesson-list">
+                            <li>Research gathers context only; Innovate compares options; Plan creates the concrete checklist.</li>
+                            <li>Execute applies approved steps; Review checks diffs, acceptance criteria, and regressions.</li>
+                            <li>Return to Plan when scope shifts or gaps surface mid-execution.</li>
+                        </ul>
+                        <div class="callout success">
+                            <strong>Live checklist:</strong> Declare mode, forbid edits until Plan is ready, execute only approved steps, log with emojis.
+                        </div>
+                    </article>
+                    <article class="card lesson">
+                        <span class="badge">Lesson 03</span>
+                        <h3>Cursor Chat vs Codex</h3>
+                        <ul class="lesson-list">
+                            <li><strong>Cursor</strong> excels at tight loops, debugging, and research.</li>
+                            <li><strong>Codex</strong> handles multi-file edits and longer tasks with explicit plans plus repo context.</li>
+                            <li>Switch when a job will span 10+ minutes or touch multiple files — codify the rules first.</li>
+                        </ul>
+                    </article>
+                    <article class="card lesson">
+                        <span class="badge">Lesson 04</span>
+                        <h3>Project Scaffolding Patterns</h3>
+                        <ul class="lesson-list">
+                            <li>Pair <code>agents.md</code>, plans, and emoji logs for every significant task.</li>
+                            <li>Keep secrets in <code>.env</code>; scope MCP configs per project to control exposure.</li>
+                            <li>Compose a few general-purpose tools instead of proliferating narrow ones.</li>
+                        </ul>
+                    </article>
+                    <article class="card lesson">
+                        <span class="badge">Lesson 05</span>
+                        <h3>Communication &amp; UI Patterns</h3>
+                        <ul class="lesson-list">
+                            <li>Lean on Magnite gradients, card lift, and motion for branded decks.</li>
+                            <li>Use slide-as-card sections with phase badges and concise, high-contrast copy.</li>
+                            <li>Structure sequences goals → lessons → checklists → examples.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="how-tos">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="gradient">How-Tos / Tips &amp; Tricks</span></h2>
+                    <p class="section-subtitle">
+                        Prompts and rituals you can copy straight into Cursor or Codex to get consistent execution.
+                    </p>
+                </div>
+                <div class="grid two">
+                    <article class="card">
+                        <h3>Working Rituals</h3>
+                        <ul>
+                            <li>Monitor token usage; split tasks when chats creep past the ~50% context mark.</li>
+                            <li>Front-load goals and rules, close with a checklist of deliverables.</li>
+                            <li>Separate research, plan, and execute turns to prevent chaotic edits.</li>
+                            <li>Keep logs readable: emoji prefix, one line per event.</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Prompt Templates</h3>
+                        <pre><code>Goal: [what you need]
+Rules: [links / files], keep context ≤ X, mode discipline
+Deliver: [bullet list of outputs]
+Mode: [Research | Plan | Execute | Review]</code></pre>
+                        <pre><code>We are in PLAN mode.
+- Read: agents.md, notes-1006-expanded.md (context section).
+- Produce: numbered plan with file paths + checks.
+- Do not write code yet.</code></pre>
+                        <pre><code>We are in EXECUTE mode.
+- Apply steps 1–3 from plan.
+- After each edit, append emoji log to progress.md.
+- Deviation? Pause and return to Plan.</code></pre>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="risks">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="gradient">Risks &amp; Mitigations</span></h2>
+                    <p class="section-subtitle">
+                        Edge cases we identified during the build and how to keep them contained as the workflow scales.
+                    </p>
+                </div>
+                <div class="dual two-column">
+                    <article class="card">
+                        <h3>Primary Risks</h3>
+                        <ul>
+                            <li><strong>Empty transcripts:</strong> Favor summary-first flows and flag derived vs primary sources.</li>
+                            <li><strong>Rate limits:</strong> Throttle/batch large syncs; use pagination and backoff.</li>
+                            <li><strong>Ambiguity in terms:</strong> Maintain glossary + disambiguation examples inside prompts.</li>
+                            <li><strong>Overgrown context:</strong> Split work into fresh chats when scope shifts.</li>
+                            <li><strong>Runaway edits:</strong> Enforce mode discipline and plan checkpoints.</li>
+                            <li><strong>Secrets exposure:</strong> Keep <code>.env</code> in <code>.gitignore</code>; never paste secrets in chat.</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Mitigation Moves</h3>
+                        <ul>
+                            <li>Build summary-first briefs, then share transcripts only when needed.</li>
+                            <li>Queue nightly jobs + webhook or poll for incrementals.</li>
+                            <li>Seed prompts with product dictionaries and role-based examples.</li>
+                            <li>Re-seed chats with just the relevant files before long turns.</li>
+                            <li>Require plan checklists before entering Execute on sizable edits.</li>
+                            <li>Verify environment configs locally and restrict secrets to runtime.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="next-steps">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="gradient">Next Steps</span></h2>
+                    <p class="section-subtitle">
+                        Updated checklist for the Magnite team — move from repo setup to plan-led execution with the Gong MCP.
+                    </p>
+                </div>
+                <div class="grid two">
+                    <article class="card">
+                        <span class="badge green">Step 01</span>
+                        <h3>Pull Repo &amp; Wire Gong MCP</h3>
+                        <ul>
+                            <li>Clone the GitHub repo fresh inside Cursor.</li>
+                            <li>Set <code>GONG_ACCESS_KEY</code> and <code>GONG_ACCESS_SECRET</code> in <code>.env</code> (never commit secrets).</li>
+                            <li>Confirm <code>.cursor/mcp.json</code> includes the Gong server config, then reload MCPs.</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <span class="badge green">Step 02</span>
+                        <h3>Smoke-Test the MCP in Cursor</h3>
+                        <ul>
+                            <li>Ask the agent to list Gong tools, then fetch calls for the last 7 days (cap 50–100).</li>
+                            <li>Retrieve a call brief/outline and save outputs under <code>gong/transcripts/&lt;id&gt;.*</code>.</li>
+                            <li>Verify responses are structured as expected before moving to planning.</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <span class="badge green">Step 03</span>
+                        <h3>Create an Upgrade Plan Doc</h3>
+                        <ul>
+                            <li>Inputs: <code>gong/docs/discovery-call-1006.md</code>, this review, tenant requirements.</li>
+                            <li>Run Cursor through Research → Brainstorm → Plan to draft the upgrade checklist.</li>
+                            <li>Document tools to add, data shapes (<code>includeEntities</code>, trackers, summary-first), logging, rate limits, and acceptance tests.</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <span class="badge gold">Step 04</span>
+                        <h3>Execute with Codex</h3>
+                        <ul>
+                            <li>Launch Codex from repo root, feeding the approved plan and relevant files as rules.</li>
+                            <li>Implement only what the plan covers; append emoji logs to <code>progress.md</code> for each change.</li>
+                            <li>Wrap with a PR or plan-summary detailing changes, tests, and outstanding questions.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="deck-outline">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="gradient">Deck Outline</span></h2>
+                    <p class="section-subtitle">
+                        Suggested slide-by-slide flow for the upcoming HTML deck — mirror the structure to ship fast.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3>Slide 1 — Title &amp; Goals</h3>
+                            <p>State why the session matters and how to apply the patterns immediately.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Slide 2 — Prompt vs Context Engineering</h3>
+                            <p>Define both, share rules, and highlight token discipline tactics.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Slide 3 — RIPER-5 Modes</h3>
+                            <p>Map modes to use cases and list the live checklist we practiced.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Slide 4 — Cursor vs Codex</h3>
+                            <p>Clarify roles, switching signals, and plan-first expectations.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Slide 5 — Project Scaffolding</h3>
+                            <p>Show the <code>agents.md</code>, plans, and logs pattern that keeps teams synced.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Slide 6 — Tips &amp; Tricks</h3>
+                            <p>Summarize prompting checklists, logging format, and when to split chats.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Slide 7 — Resources</h3>
+                            <p>List repo files, documents, and external references your clients can revisit.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Slide 8 — Gong MCP Appendix</h3>
+                            <p>Briefly recap the example integration and next moves if they pursue it.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="appendix">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="gradient">Appendix — Gong MCP</span></h2>
+                    <p class="section-subtitle">
+                        Quick reference if you decide to advance the Gong integration after today’s walkthrough.
+                    </p>
+                </div>
+                <div class="grid two">
+                    <article class="card">
+                        <h3>What We Demonstrated</h3>
+                        <ul>
+                            <li>Connected a basic MCP to list calls even when transcripts were sparse.</li>
+                            <li>Prioritized summary and outline fields to work around missing text.</li>
+                            <li>Showed how minimal tool surface area keeps agents predictable.</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Continuation Checklist</h3>
+                        <ul>
+                            <li>Verify <code>GONG_ACCESS_KEY</code> / <code>GONG_ACCESS_SECRET</code>.</li>
+                            <li>List calls with pagination + retry; persist a lightweight call index.</li>
+                            <li>Add <code>get_call_brief</code> and <code>get_call_outline</code> tools.</li>
+                            <li>Draft persona templates (Exec, PM) and test on ~10 calls.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="resources">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="gradient">Resources &amp; Links</span></h2>
+                    <p class="section-subtitle">
+                        Repo anchors, MCP references, and the link index we cited during the session.
+                    </p>
+                </div>
+                <div class="grid two">
+                    <article class="card">
+                        <h3>Repo Files</h3>
+                        <div class="chip-group">
+                            <span class="chip"><code>RIPER-5.md</code></span>
+                            <span class="chip"><code>AGENTS.md</code></span>
+                            <span class="chip"><code>RULES.MD</code></span>
+                            <span class="chip"><code>magnite-style-guide.md</code></span>
+                            <span class="chip"><code>index.html</code></span>
+                            <span class="chip"><code>index2.html</code></span>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <h3>MCP Docs &amp; Discovery</h3>
+                        <div class="chip-group">
+                            <span class="chip"><code>gong/plan-mcp-v2.md</code></span>
+                            <span class="chip"><code>gong/plan-gong-upgrade.md</code></span>
+                            <span class="chip"><code>gong/docs/mcp_resources.md</code></span>
+                            <span class="chip"><code>cursor.directory</code></span>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <h3>Link Index (Session)</h3>
+                        <ul>
+                            <li><strong>Prompt engineering overview:</strong> <code>notes-1006-expanded.md</code> (Slide 1)</li>
+                            <li><strong>Context engineering blog:</strong> <code>notes-1006-expanded.md</code> (Slide 2)</li>
+                            <li><strong>Deep Agents reference:</strong> <code>notes-1006-expanded.md</code> (Slide 4)</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        © 2025 Magnite Product Team · Momentum-first interfaces for collaborative AI workflows.
+    </footer>
+</body>
+</html>
